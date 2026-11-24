@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Salmon Angelo S — AI/ML Engineer</title>
+<meta name="description" content="AI/ML Engineer specializing in end-to-end systems, edge distillation, RAG pipelines, and human-in-the-loop architectures.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0E1013;
+  --surface:#15191E;
+  --surface2:#1E232B;
+  --fg:#E4E8EE;
+  --muted:#8B94A3;
+  --accent:#C6FF33;
+  --accent-cyan:#00E5FF;
+  --line:#222832;
+  --line2:rgba(228,232,238,.12);
+  --hero-name:#1C2128;
+  --g:clamp(1.25rem, 4vw, 3rem);
+  --sec:clamp(4.5rem, 8vh, 8.5rem);
+  --fd:"Anton",sans-serif;
+  --fs:"Onest",sans-serif;
+  --ease:cubic-bezier(0.22,1,0.36,1)
+}
+html{font-size:16px;background:var(--bg);color-scheme:dark;scroll-behavior:smooth}
+@media(max-width:480px){html{font-size:15px}}
+body{background:var(--bg);color:var(--fg);font-family:var(--fs);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;max-width:100vw;font-size:1.0625rem;line-height:1.6}
+::selection{background:var(--accent);color:#0E1013}
+a{color:inherit;text-decoration:none}ul{list-style:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+main{position:relative;width:100%;overflow-x:hidden}
+.d{font-family:var(--fd);text-transform:uppercase;letter-spacing:-.01em;font-weight:400}
+.eyebrow{display:flex;align-items:center;gap:.75rem;font-size:clamp(.75rem,1.8vw,.8125rem);line-height:1.2;font-weight:600;text-transform:uppercase;letter-spacing:.22em;color:var(--muted)}
+.eyebrow:before{content:"";width:.5rem;height:.5rem;border-radius:9999px;background:var(--accent);box-shadow:0 0 8px rgba(198,255,51,0.6);flex-shrink:0}
+.muted{color:var(--muted)}
+section,footer{padding:var(--sec) var(--g) 0}
+
+/* top scroll progress bar */
+#scroll-bar{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--accent) 0%,var(--accent-cyan) 100%);box-shadow:0 0 10px rgba(198,255,51,0.7),0 0 20px rgba(0,229,255,0.4);z-index:1000;pointer-events:none;transition:width 0.08s linear}
+
+/* line reveal */
+.ln{display:block;overflow:hidden;padding-bottom:.06em}
+.ln>span{display:block;transform:translateY(110%);opacity:0;transition:transform .9s var(--ease),opacity .9s var(--ease);transition-delay:calc(var(--i,0)*90ms)}
+.in .ln>span,.ln.in>span{transform:none;opacity:1}
+.rv{opacity:0;transform:translateY(40px);transition:opacity .6s var(--ease),transform .6s var(--ease);transition-delay:calc(var(--i,0)*100ms)}
+.rv.in{opacity:1;transform:none}
+h2.d{margin-top:1.5rem;font-size:clamp(2.5rem,6.5vw,4.5rem);line-height:1;color:var(--fg)}
+@media(min-width:640px){h2.d.big{font-size:clamp(3.5rem,7.5vw,5rem);line-height:.95}}
+
+/* preloader */
+#pre{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:.75rem;padding:var(--g);transition:transform .65s cubic-bezier(.22,1,.36,1)}
+@media(min-width:640px){#pre{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:1rem}}
+#pre.fade>*{opacity:0}#pre>*{transition:opacity .3s}
+#pre.wipe{transform:translateY(-100%)}
+#pre .b{font-size:clamp(1.25rem,3vw,1.75rem);line-height:1;color:var(--fg)}#pre .n{font-size:clamp(4.5rem,14vw,7.5rem);line-height:1;font-variant-numeric:tabular-nums;color:var(--fg)}#pre .n i{font-style:normal;color:var(--accent);text-shadow:0 0 16px rgba(198,255,51,0.5)}
+
+/* nav */
+header{position:fixed;inset:0 0 auto;z-index:50;pointer-events:none}
+nav{pointer-events:auto;display:flex;align-items:center;justify-content:space-between;padding:clamp(1rem,2.5vh,1.5rem) var(--g)}
+.logo{display:flex;align-items:center;gap:.75rem}
+.logo b{display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:9999px;border:1px solid var(--line);font-weight:600;font-size:.9rem;background:rgba(21,25,30,.8);color:var(--fg);backdrop-filter:blur(8px);transition:border-color .3s,color .3s,box-shadow .3s,transform .2s var(--ease)}
+.logo:hover b{border-color:var(--accent);color:var(--accent);box-shadow:0 0 12px rgba(198,255,51,0.3)}
+.logo span{display:none;font-size:.8125rem;font-weight:500;text-transform:uppercase;letter-spacing:.22em;color:var(--muted);transition:color .3s}
+.logo:hover span{color:var(--fg)}
+@media(min-width:640px){.logo span{display:block}}
+.links{display:none;gap:clamp(1.25rem,2.2vw,2rem);align-items:center}
+.links a{position:relative;font-size:.8125rem;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);transition:color .3s,transform .2s var(--ease);display:inline-block;padding-block:.25rem}
+.links a:after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-cyan));box-shadow:0 0 8px rgba(0,229,255,0.6);transition:width .32s var(--ease)}
+.links a:hover{color:var(--fg);transform:translateY(-1px)}.links a:hover:after{width:100%}
+.burger{width:2.75rem;height:2.75rem;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.375rem;z-index:70;position:relative;touch-action:manipulation}
+.burger i{height:2px;width:1.5rem;background:var(--fg);transition:transform .3s,opacity .3s,background-color .3s}
+.burger:hover i{background:var(--accent)}
+.burger.o i:nth-child(1){transform:translateY(.5rem) rotate(45deg)}.burger.o i:nth-child(2){opacity:0}.burger.o i:nth-child(3){transform:translateY(-.5rem) rotate(-45deg)}
+@media(min-width:768px){.links{display:flex}.burger{display:none!important}}
+#menu{position:fixed;inset:0;z-index:55;background:var(--bg);display:flex;flex-direction:column;justify-content:center;gap:1.5rem;padding-inline:var(--g);opacity:0;pointer-events:none;transition:opacity .45s}
+#menu.o{opacity:1;pointer-events:auto}
+#menu a{font-family:var(--fd);text-transform:uppercase;font-size:clamp(2.5rem,9vw,4rem);line-height:1.1;transform:translateY(36px);opacity:0;transition:transform .42s ease-out,opacity .42s,color .3s;transition-delay:calc(var(--i)*60ms);color:var(--fg);padding-block:.5rem}
+#menu a:hover{color:var(--accent);transform:translateX(10px)}
+#menu.o a{transform:none;opacity:1;transition-delay:calc(120ms + var(--i)*60ms)}
+
+/* hero */
+#top{position:relative;display:flex;flex-direction:column;min-height:100svh;overflow:hidden;padding:0;--mx:50%;--my:50%}
+.htop{position:relative;z-index:30;display:flex;flex-direction:column;gap:1.25rem;padding:clamp(5rem,11vh,7.5rem) var(--g) 0}
+@media(min-width:768px){.htop{flex-direction:row;align-items:flex-start;justify-content:space-between;gap:2rem}}
+
+/* Role Stack Interactive Highlight */
+.roles{font-size:clamp(1.65rem,6vw,3.25rem);line-height:1.06;color:var(--fg)}
+.role-item{position:relative;cursor:default;transition:transform .35s var(--ease),opacity .35s var(--ease),color .35s var(--ease)}
+.role-item .r-text{display:block;transition:color .35s var(--ease)}
+.role-item:before{content:"";position:absolute;left:-.9rem;top:18%;bottom:18%;width:3px;border-radius:2px;background:var(--accent-cyan);box-shadow:0 0 10px rgba(0,229,255,0.8);opacity:0;transform:scaleY(0);transition:transform .35s var(--ease),opacity .35s var(--ease)}
+.roles:has(.role-item:hover) .role-item:not(:hover){opacity:.32}
+.role-item:hover{transform:translateX(8px)}
+.role-item:hover .r-text{color:var(--accent)}
+.role-item:hover:before{opacity:1;transform:scaleY(1)}
+
+.hdesc{max-width:26rem;color:var(--muted);font-weight:400;font-size:clamp(.9rem,2.4vw,1.0625rem);line-height:1.55}
+@media(min-width:768px){.hdesc{text-align:right}}
+
+/* Hero Spotlight */
+.hero-spotlight{position:absolute;inset:0;pointer-events:none;z-index:8;background:radial-gradient(circle clamp(320px,45vw,520px) at var(--mx,50%) var(--my,50%),rgba(198,255,51,0.14) 0%,rgba(0,229,255,0.06) 40%,transparent 75%);opacity:0;transition:opacity .5s var(--ease)}
+#top:hover .hero-spotlight{opacity:1}
+
+.glow{position:absolute;left:50%;bottom:-20%;width:90vw;height:70vh;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(198,255,51,.08),transparent);z-index:1;pointer-events:none}
+.fade{position:absolute;inset-inline:0;bottom:0;height:clamp(14vh,18vh,22vh);background:linear-gradient(transparent,var(--bg));z-index:20;pointer-events:none}
+
+/* Giant Hero Name */
+h1.name{position:absolute;inset-inline:0;bottom:0;transform:translateY(6%);z-index:10;display:flex;flex-direction:column;align-items:center;font-size:clamp(5rem,19vw,26rem);line-height:.78;color:var(--hero-name);pointer-events:none;user-select:none;text-shadow:0 0 30px rgba(0,0,0,0.8);width:100%}
+h1.name .row{display:block;white-space:nowrap;overflow:hidden;padding-top:.04em}
+h1.name .row .l{display:inline-block;transform:translateY(100%);opacity:0;transition:transform .9s var(--ease),opacity .9s var(--ease)}
+h1.name.go .l{transform:none;opacity:1}
+
+/* Hero Portrait - Centered and Big with Depth Parallax */
+.hero-portrait{position:absolute;inset-inline:0;bottom:0;height:clamp(400px,80vh,920px);z-index:15;pointer-events:none;display:flex;align-items:flex-end;justify-content:center}
+.hero-portrait img{height:100%;width:auto;max-width:92vw;object-fit:contain;object-position:bottom center;-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 68%,rgba(0,0,0,0.6) 84%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0%,#000 68%,rgba(0,0,0,0.6) 84%,transparent 100%);filter:drop-shadow(0 25px 50px rgba(0,0,0,0.65));will-change:transform;transition:transform .12s cubic-bezier(0.2,0,0,1)}
+@media(max-width:1024px){.hero-portrait{height:clamp(380px,70vh,680px)}}
+@media(max-width:768px){.hero-portrait{height:clamp(340px,58vh,520px);max-width:96vw;opacity:.7}}
+@media(max-width:480px){.hero-portrait{height:clamp(300px,50vh,440px);max-width:100vw;opacity:.65}}
+
+.cue{position:absolute;z-index:30;bottom:clamp(1rem,2.5vh,2rem);left:var(--g);display:flex;align-items:center;gap:.75rem;font-size:clamp(.7rem,1.8vw,.8125rem);text-transform:uppercase;letter-spacing:.22em;color:var(--muted)}
+.cue:before{content:"";width:2.5rem;height:2px;background:var(--accent);box-shadow:0 0 10px rgba(198,255,51,0.7)}
+@media(max-height:600px){.cue{display:none}}
+.late{opacity:0;transform:translateY(16px);transition:opacity .52s var(--ease),transform .52s var(--ease)}
+.late.go{opacity:1;transform:none}
+
+/* marquee */
+.mq{overflow:hidden;border-block:1px solid var(--line);padding:clamp(1.25rem,2.5vh,2rem) 0;margin-top:0}
+.track{display:flex;width:max-content;flex-wrap:nowrap;animation:mq 22s linear infinite}
+.track span{font-family:var(--fd);text-transform:uppercase;font-size:clamp(2rem,5vw,3.25rem);letter-spacing:-.01em;white-space:nowrap;display:flex;align-items:center;color:var(--fg)}
+.track span:after{content:"";margin-inline:clamp(1rem,3vw,2rem);width:.625rem;height:.625rem;border-radius:9999px;background:var(--accent);box-shadow:0 0 10px rgba(198,255,51,0.6)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* story */
+.grid12{display:grid;gap:2.5rem var(--g)}
+@media(min-width:1024px){.grid12{grid-template-columns:repeat(12,1fr)}.c6{grid-column:span 6}.c5{grid-column:span 5}.c7{grid-column:span 7}.c4{grid-column:span 4}.c8{grid-column:span 8}.c3{grid-column:span 3}}
+.lead{margin-top:2rem;max-width:46ch;font-size:clamp(1.1rem,2.8vw,1.375rem);line-height:1.5;color:var(--muted)}
+.pr li{display:grid;grid-template-columns:auto 1fr;column-gap:1.5rem;border-top:1px solid var(--line);padding:clamp(1.25rem,3vh,2rem) 0;transition:background-color .3s}
+.pr li:last-child{border-bottom:1px solid var(--line)}
+.pr .num{font-size:clamp(1.35rem,3vw,1.75rem);line-height:1.15;font-weight:600;font-variant-numeric:tabular-nums;color:var(--accent);text-shadow:0 0 12px rgba(198,255,51,0.3)}
+.pr h3{font-size:clamp(1.35rem,3vw,1.75rem);line-height:1.15;font-weight:600;letter-spacing:-.01em;color:var(--fg);transition:color .3s}
+.pr li:hover h3{color:var(--accent)}
+.pr p{margin-top:.75rem;max-width:44ch;color:var(--muted);font-size:clamp(.95rem,2vw,1.0625rem)}
+
+/* ventures / projects */
+.vh{display:flex;flex-direction:column;gap:1.5rem}
+@media(min-width:640px){.vh{flex-direction:row;align-items:flex-end;justify-content:space-between}}
+.lbl{font-size:.8125rem;text-transform:uppercase;letter-spacing:.22em;color:var(--muted)}
+.vg{margin-top:clamp(2.5rem,5vh,4rem);display:grid;gap:clamp(3.5rem,7vh,5rem) var(--g)}
+@media(min-width:860px){.vg{grid-template-columns:1fr 1fr}.vg li:nth-child(even){margin-top:clamp(3rem,6vw,5.5rem)}}
+
+/* Project Card Micro-Interactions */
+.vg article{transition:transform .4s var(--ease);display:flex;flex-direction:column;width:100%}
+.vg article:hover{transform:translateY(-4px)}
+
+.pic{position:relative;aspect-ratio:16/9;width:100%;border-radius:2px;overflow:hidden;background:var(--surface);display:flex;align-items:stretch;justify-content:stretch;border:1px solid var(--line);box-shadow:0 10px 30px -10px rgba(0,0,0,0.5);transition:border-color .4s var(--ease),box-shadow .4s var(--ease)}
+.pic svg{width:100%;height:100%;display:block}
+
+/* Dual-color SVG border trace overlay on hover */
+.pic:after{content:"";position:absolute;inset:-1px;border:1.5px solid transparent;border-radius:2px;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-cyan) 100%) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:destination-out;mask-composite:exclude;opacity:0;box-shadow:0 0 15px rgba(198,255,51,0.25);transition:opacity .42s var(--ease);pointer-events:none;z-index:5}
+.vg article:hover .pic:after{opacity:1}
+.vg article:hover .pic{box-shadow:0 20px 40px -10px rgba(0,0,0,0.7),0 0 25px -5px rgba(198,255,51,0.15)}
+
+.pic:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(198,255,51,.2) 45%,rgba(0,229,255,.2) 55%,transparent 70%);transform:translateX(-100%);transition:transform .9s var(--ease);pointer-events:none;z-index:4}
+.vg article:hover .pic:before{transform:translateX(100%)}
+
+/* Project Card Content Layout */
+.vr{margin-top:1.5rem;border-top:1px solid var(--line);padding-top:1.25rem;display:flex;flex-direction:column;gap:1.25rem}
+.vr-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.vr-header h3{font-size:clamp(1.4rem,3.2vw,1.85rem);line-height:1.15;font-weight:600;letter-spacing:-.01em;color:var(--fg);transition:color .35s ease-out}
+.vg article:hover .vr-header h3{color:var(--accent)}
+
+/* Interactive Demo Button */
+.demo-btn{display:inline-flex;align-items:center;gap:.4rem;font-size:.8125rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#0E1013!important;background:var(--accent);padding:.45rem .95rem;border-radius:2px;box-shadow:0 0 10px rgba(198,255,51,0.4);transition:background-color .3s var(--ease),color .3s var(--ease),box-shadow .3s var(--ease),transform .2s var(--ease);flex-shrink:0}
+.demo-btn:hover{background:var(--accent-cyan);color:#0E1013!important;box-shadow:0 0 16px rgba(0,229,255,0.7);transform:translateY(-1px)}
+.demo-btn em{font-style:normal;transition:transform .2s var(--ease);display:inline-block}
+.demo-btn:hover em{transform:translate(2px,-2px)}
+
+.vr-desc{color:var(--muted);font-size:clamp(.9rem,2vw,1rem);line-height:1.6}
+.vr-bullets{margin-top:.5rem;display:flex;flex-direction:column;gap:.5rem}
+.vr-bullets li{position:relative;padding-left:1.25rem;color:#B4BDCB;font-size:clamp(.85rem,1.8vw,.9375rem);line-height:1.55}
+.vr-bullets li:before{content:"▹";position:absolute;left:0;color:var(--accent);font-size:.9rem}
+.vr-bullets strong{color:var(--fg);font-weight:600}
+
+.vr-meta{display:flex;align-items:center;justify-content:space-between;border-top:1px dashed var(--line);padding-top:.75rem;margin-top:.25rem;gap:1rem;flex-wrap:wrap}
+.vr-meta .tag-label{font-size:.8125rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
+.vr-meta .rt-badge{font-size:.8125rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);transition:color .3s,text-shadow .3s}
+.vg article:hover .vr-meta .rt-badge{color:var(--accent-cyan);text-shadow:0 0 10px rgba(0,229,255,0.5)}
+
+.cat{font-size:clamp(.75rem,1.8vw,.8125rem);text-transform:uppercase;letter-spacing:.16em;color:var(--muted);word-break:break-word}
+
+/* impact / stats */
+dl.st{margin-top:clamp(2.5rem,5vh,4rem);display:grid;grid-template-columns:1fr;border-top:1px solid var(--line)}
+@media(min-width:600px){dl.st{grid-template-columns:1fr 1fr}dl.st>div:nth-child(2n){border-left:1px solid var(--line);padding-left:clamp(1rem,3vw,2rem)}}
+@media(min-width:1024px){dl.st{grid-template-columns:repeat(4,1fr)}dl.st>div{padding-block:3rem}dl.st>div:nth-child(n){border-left:1px solid var(--line);padding-left:2rem}dl.st>div:first-child{border-left:0;padding-left:0}}
+dl.st>div{display:flex;flex-direction:column;gap:1rem;border-bottom:1px solid var(--line);padding:clamp(1.75rem,3.5vh,2.5rem) 0;transition:background-color .3s}
+dl.st dd{order:1;font-family:var(--fd);font-size:clamp(3.75rem,9vw,6.5rem);line-height:.92;letter-spacing:-.01em;color:var(--fg);transition:color .34s ease-out,text-shadow .34s ease-out;word-break:normal;overflow-wrap:normal}
+dl.st>div:hover dd{color:var(--accent);text-shadow:0 0 20px rgba(198,255,51,0.35)}
+dl.st dt{order:2;max-width:22ch;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);font-size:clamp(.8rem,1.8vw,.875rem)}
+
+/* voices / achievements */
+.sel button{width:100%;display:flex;align-items:baseline;gap:clamp(.75rem,2vw,1.25rem);border-top:1px solid var(--line);padding:clamp(1.25rem,2.5vh,1.75rem) 0;text-align:left;transition:padding-left .3s var(--ease)}
+.sel li:last-child button{border-bottom:1px solid var(--line)}
+.sel .ix{font-size:.8125rem;font-variant-numeric:tabular-nums;letter-spacing:.18em;color:var(--muted);transition:color .3s}
+.sel .nm{flex:1;font-size:clamp(1.25rem,3vw,1.75rem);line-height:1.15;font-weight:600;letter-spacing:-.01em;color:var(--muted);transition:color .3s}
+.sel .rl{display:block;margin-top:.25rem;font-size:.8125rem;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--accent)}
+.sel i{display:block;height:2px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-cyan));transition:width .4s var(--ease)}
+.sel .a .ix{color:var(--accent);text-shadow:0 0 8px rgba(198,255,51,0.5)}.sel .a .nm{color:var(--fg)}.sel .a i{width:2.5rem}
+.sel button:hover{padding-left:.5rem}
+.sel button:hover .nm{color:var(--accent)}
+
+.panel{display:grid;gap:2rem}
+@media(min-width:640px){.panel{grid-template-columns:1fr auto;align-items:flex-start}}
+.panel blockquote p{max-width:30ch;font-size:clamp(1.25rem,3.5vw,1.75rem);line-height:1.3;font-weight:500;letter-spacing:-.01em;color:var(--fg)}
+.panel blockquote p .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em}
+.panel blockquote p .w>span{display:inline-block;transform:translateY(18px);opacity:0;animation:wd .52s cubic-bezier(.165,.84,.44,1) forwards;animation-delay:calc(var(--k)*22ms)}
+@keyframes wd{to{transform:none;opacity:1}}
+.panel footer{margin-top:2rem;padding:0;font-size:.8125rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted)}
+.badge{width:100%;border-radius:2px;background:radial-gradient(130% 130% at 30% 15%,var(--surface2),var(--surface));border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;padding:clamp(1.25rem,3vw,1.5rem);transition:border-color .3s,box-shadow .3s}
+.badge:hover{border-color:var(--accent);box-shadow:0 0 20px rgba(198,255,51,0.15)}
+@media(min-width:640px){.badge{width:17rem;aspect-ratio:4/5}}
+@media(max-width:639px){.badge{min-height:14rem;margin-top:1.5rem}}
+.badge .big{font-size:clamp(4.5rem,12vw,7.5rem);line-height:.9;color:var(--accent);text-shadow:0 0 20px rgba(198,255,51,0.4)}
+.badge small{font-size:.8125rem;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);line-height:1.5}
+.badge small b{color:var(--fg);font-weight:600}
+
+/* technical stack matrix */
+.sk-grid{margin-top:clamp(2.5rem,5vh,4rem);display:grid;gap:1.5rem}
+@media(min-width:768px){.sk-grid{grid-template-columns:1fr 1fr}}
+.sk-card{background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:clamp(1.5rem,3vw,2rem);display:flex;flex-direction:column;gap:1rem;transition:border-color .3s,box-shadow .3s}
+.sk-card:hover{border-color:var(--line2);box-shadow:0 10px 25px -10px rgba(0,0,0,0.5)}
+.sk-card h3{font-size:.875rem;font-weight:600;text-transform:uppercase;letter-spacing:.2em;color:var(--accent);display:flex;align-items:center;gap:.5rem}
+.sk-card h3:before{content:"";width:.375rem;height:.375rem;border-radius:9999px;background:var(--accent-cyan);box-shadow:0 0 6px rgba(0,229,255,0.7)}
+.sk-pills{display:flex;flex-wrap:wrap;gap:.5rem}
+.sk-pill{font-size:.8125rem;font-weight:500;padding:.35rem .75rem;border-radius:2px;background:#0E1013;border:1px solid var(--line);color:#C8CDD6;transition:border-color .2s,color .2s,transform .2s}
+.sk-pill:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+
+/* credentials / certifications & education */
+.cred-box{background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:clamp(1.5rem,3vw,2.25rem);display:flex;flex-direction:column;gap:1.5rem}
+.cred-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.cred-header h3{font-size:1.5rem;line-height:1.2;font-weight:600;color:var(--fg)}
+.verify-btn{display:inline-flex;align-items:center;gap:.4rem;font-size:.8125rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#0E1013!important;background:var(--accent-cyan);padding:.45rem .95rem;border-radius:2px;box-shadow:0 0 10px rgba(0,229,255,0.4);transition:background-color .3s var(--ease),color .3s var(--ease),box-shadow .3s var(--ease),transform .2s var(--ease)}
+.verify-btn:hover{background:var(--accent);color:#0E1013!important;box-shadow:0 0 16px rgba(198,255,51,0.7);transform:translateY(-1px)}
+.verify-btn em{font-style:normal;transition:transform .2s var(--ease);display:inline-block}
+.verify-btn:hover em{transform:translate(2px,-2px)}
+.cred-list{display:flex;flex-direction:column;gap:1rem}
+.cred-item{padding-bottom:1rem;border-bottom:1px solid var(--line)}
+.cred-item:last-child{border-bottom:0;padding-bottom:0}
+.cred-item h4{font-size:1.0625rem;font-weight:600;color:var(--fg)}
+.cred-item p{font-size:.875rem;color:var(--muted);margin-top:.25rem}
+
+.edu-item{padding-bottom:1.5rem;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:.5rem}
+.edu-item:last-child{border-bottom:0;padding-bottom:0}
+.edu-degree{font-size:1.25rem;line-height:1.3;font-weight:600;color:var(--fg)}
+.edu-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;font-size:.875rem;color:var(--muted)}
+.edu-cgpa{color:var(--accent);font-weight:700;font-size:.95rem}
+.edu-desc{font-size:.9375rem;color:#B4BDCB;line-height:1.5}
+
+/* contact / magnetic CTA */
+#contact h2.d{max-width:18ch;color:var(--fg)}
+.contact-links{margin-top:2.5rem;display:flex;flex-direction:column;gap:1.5rem}
+.mail{display:inline-flex;align-items:baseline;gap:clamp(.5rem,1.5vw,1rem);font-size:clamp(1.35rem,4.2vw,3.25rem);font-weight:600;letter-spacing:-.01em;word-break:break-all;color:var(--fg);transition:transform .34s ease-out,color .34s ease-out;position:relative}
+.mail:hover{transform:translateX(14px);color:var(--accent)}.mail em{font-style:normal;color:var(--accent);transition:color .3s,transform .3s}
+.mail:hover em{color:var(--accent-cyan);transform:translateX(4px)}
+.contact-meta{display:flex;gap:clamp(1.5rem,3vw,3rem);flex-wrap:wrap;align-items:center;margin-top:.5rem}
+.contact-item{display:inline-flex;align-items:center;gap:.5rem;font-size:1rem;color:var(--muted);transition:color .2s}
+.contact-item:hover{color:var(--accent)}
+.contact-item svg{width:1.1rem;height:1.1rem;fill:currentColor}
+
+.fb{margin-top:var(--sec);border-top:1px solid var(--line);padding:3rem 0;display:grid;gap:2rem}
+@media(min-width:1024px){.fb{grid-template-columns:repeat(12,1fr)}.fb .r{text-align:right}}
+.fb .sig{font-size:clamp(2rem,5vw,3.25rem);line-height:1;color:var(--fg)}
+.fb ul a{display:inline-flex;align-items:center;color:var(--muted);transition:color .3s,transform .2s}
+.fb ul a:before{content:"";height:2px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-cyan));box-shadow:0 0 6px rgba(0,229,255,0.6);transition:width .3s,margin .3s}
+.fb ul a:hover{color:var(--fg);transform:translateX(4px)}.fb ul a:hover:before{width:1.5rem;margin-right:.75rem}
+
+@media(prefers-reduced-motion:reduce){#pre{display:none}.track{animation:none}.rv,.ln>span,.late,h1.name .l,.hero-portrait{transition:none!important;opacity:1!important;transform:none!important}.panel blockquote p .w>span{animation:none;opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="scroll-bar" aria-hidden="true"></div>
+<div id="pre" aria-hidden="true"><div class="b d">Salmon Angelo S</div><div class="n d"><span id="cnt">0</span><i>%</i></div></div>
+
+<header><nav>
+<a class="logo btn-magnetic" href="#top"><b>SA</b><span>Salmon Angelo S</span></a>
+<ul class="links">
+  <li><a href="#story" class="btn-magnetic">About</a></li>
+  <li><a href="#work" class="btn-magnetic">Work</a></li>
+  <li><a href="#skills" class="btn-magnetic">Stack</a></li>
+  <li><a href="#impact" class="btn-magnetic">Numbers</a></li>
+  <li><a href="#wins" class="btn-magnetic">Wins</a></li>
+  <li><a href="#credentials" class="btn-magnetic">Credentials</a></li>
+  <li><a href="#contact" class="btn-magnetic">Contact</a></li>
+</ul>
+<button class="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+</nav></header>
+<div id="menu">
+  <a style="--i:0" href="#story">About</a>
+  <a style="--i:1" href="#work">Work</a>
+  <a style="--i:2" href="#skills">Stack</a>
+  <a style="--i:3" href="#impact">Numbers</a>
+  <a style="--i:4" href="#wins">Wins</a>
+  <a style="--i:5" href="#credentials">Credentials</a>
+  <a style="--i:6" href="#contact">Contact</a>
+</div>
+
+<main>
+<section id="top">
+<div class="hero-spotlight" id="hero-spotlight" aria-hidden="true"></div>
+<div class="htop">
+<h2 class="roles d" id="roles">
+  <span class="ln role-item"><span class="r-text">AI Engineer</span></span>
+  <span class="ln role-item"><span class="r-text">Systems Builder</span></span>
+  <span class="ln role-item"><span class="r-text">Fraud Hunter</span></span>
+  <span class="ln role-item"><span class="r-text">Edge Distiller</span></span>
+</h2>
+<p class="hdesc late" id="hd">I ship complete AI systems end to end: models, APIs, evidence trails and a human in the loop wherever uncertainty matters.</p>
+</div>
+<div class="glow"></div>
+<h1 class="name d" id="nm" aria-label="Salmon Angelo"><span class="row" data-t="Salmon"></span><span class="row" data-t="Angelo"></span></h1>
+<div class="hero-portrait late" id="hp">
+  <img src="salmon-portrait.png" alt="Salmon Angelo S — AI/ML Engineer" />
+</div>
+<div class="fade"></div>
+<div class="cue late" id="cue">Scroll to enter</div>
+</section>
+
+<section class="mq" aria-label="Operating principles" style="padding:2rem 0;margin-top:var(--sec)"><div class="track" id="track"></div></section>
+
+<section id="story"><div class="grid12">
+<div class="c6">
+<div class="eyebrow">About</div>
+<h2 class="d big rvh" style="max-width:16ch"><span class="ln"><span>Evaluation first.</span></span><span class="ln" style="--i:1"><span>Humans in the loop.</span></span></h2>
+<p class="lead rv">B.E. CSE (Artificial Intelligence &amp; Machine Learning) at Sri Eshwar College of Engineering (Anna University), graduating 2029 with an <strong>8.95 CGPA</strong>. I take an idea from mathematical problem formulation and model architecture through optimization, backend services, and edge deployment, ensuring every prediction delivers deterministic evidence trails.</p>
+</div>
+<div class="c6" style="padding-top:.5rem"><ul class="pr">
+<li class="rv" style="--i:0"><span class="num">01</span><div><h3>Measure before you claim</h3><p>Leakage-controlled splits, held-out validation sets, and threshold-tuned ensembles. Metrics always come paired with their false-positive cost.</p></div></li>
+<li class="rv" style="--i:1"><span class="num">02</span><div><h3>Keep people in charge</h3><p>Triage and ranking systems that hand human analysts confidence scores, evidence trails, and interactive approval gates.</p></div></li>
+<li class="rv" style="--i:2"><span class="num">03</span><div><h3>Ship the whole stack</h3><p>Production FastAPI services, event-driven backends, RAG pipelines, and edge-distilled models packaged into real operational products.</p></div></li>
+<li class="rv" style="--i:3"><span class="num">04</span><div><h3>Explain every score</h3><p>Deterministic explanations via SHAP and uncertainty estimates, so every AI prediction is an argued, verifiable conclusion.</p></div></li>
+</ul></div></div></section>
+
+<section id="work">
+<div class="vh"><div><div class="eyebrow">Selected Projects</div><h2 class="d big rvh" style="max-width:14ch"><span class="ln"><span>Systems that</span></span><span class="ln" style="--i:1"><span>hold up.</span></span></h2></div><div class="lbl">04 / Projects</div></div>
+<ul class="vg">
+
+<!-- Project 1: SME Anchor -->
+<li class="rv"><article>
+<div class="pic">
+<svg viewBox="0 0 640 360" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SME Anchor: Event-driven WhatsApp procurement architecture with human approval gate" style="background:#15191E;display:block">
+  <defs>
+    <pattern id="sme-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#222832" stroke-width="0.75" stroke-opacity="0.7"/>
+    </pattern>
+    <linearGradient id="sme-lime-glow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C6FF33" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#00E5FF" stop-opacity="0.04"/>
+    </linearGradient>
+    <linearGradient id="sme-arr-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#C6FF33"/>
+      <stop offset="100%" stop-color="#00E5FF"/>
+    </linearGradient>
+    <marker id="sme-arr-lime" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#C6FF33"/>
+    </marker>
+    <marker id="sme-arr-cyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#00E5FF"/>
+    </marker>
+    <marker id="sme-arr-steel" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#8B94A3"/>
+    </marker>
+  </defs>
+
+  <!-- Background with technical grid -->
+  <rect width="640" height="360" fill="#0E1013"/>
+  <rect width="640" height="360" fill="url(#sme-grid)"/>
+
+  <!-- Top Telemetry Header Bar -->
+  <rect x="0" y="0" width="640" height="32" fill="#15191E" stroke="#222832" stroke-width="1"/>
+  <text x="24" y="20" font-family="'Onest', monospace, sans-serif" font-size="9.5" font-weight="600" fill="#8B94A3" letter-spacing="0.15em">ARCHITECTURE // EVENT-DRIVEN WA PIPELINE</text>
+  <text x="360" y="20" font-family="'Onest', monospace, sans-serif" font-size="9" fill="#8B94A3" letter-spacing="0.1em">ORCHESTRATOR: NEONIZE</text>
+  <rect x="520" y="7" width="96" height="18" rx="3" fill="#0E1013" stroke="#C6FF33" stroke-width="1"/>
+  <circle cx="530" cy="16" r="3" fill="#C6FF33"/>
+  <text x="538" y="20" font-family="'Onest', sans-serif" font-size="8.5" font-weight="700" fill="#C6FF33" letter-spacing="0.08em">18 STAGES</text>
+
+  <!-- 18-Stage Micro Track Indicator -->
+  <g transform="translate(24, 42)">
+    <line x1="0" y1="5" x2="592" y2="5" stroke="#222832" stroke-width="1.5"/>
+    <circle cx="0" cy="5" r="3" fill="#8B94A3"/>
+    <circle cx="35" cy="5" r="2" fill="#222832"/>
+    <circle cx="70" cy="5" r="2" fill="#222832"/>
+    <circle cx="105" cy="5" r="2" fill="#222832"/>
+    <circle cx="140" cy="5" r="2.5" fill="#8B94A3"/>
+    <circle cx="175" cy="5" r="2" fill="#222832"/>
+    <circle cx="210" cy="5" r="2" fill="#222832"/>
+    <circle cx="245" cy="5" r="2" fill="#222832"/>
+    <circle cx="280" cy="5" r="2.5" fill="#8B94A3"/>
+    <circle cx="315" cy="5" r="2" fill="#222832"/>
+    <circle cx="350" cy="5" r="2" fill="#222832"/>
+    <circle cx="385" cy="5" r="2" fill="#222832"/>
+    <circle cx="420" cy="5" r="2" fill="#222832"/>
+    <!-- Stage 14: Highlighted Approval Gate in Lime + Cyan glow -->
+    <circle cx="455" cy="5" r="5" fill="#C6FF33" stroke="#0E1013" stroke-width="1.5"/>
+    <circle cx="490" cy="5" r="2" fill="#222832"/>
+    <circle cx="525" cy="5" r="2" fill="#222832"/>
+    <circle cx="560" cy="5" r="2" fill="#222832"/>
+    <circle cx="592" cy="5" r="3.5" fill="#00E5FF"/>
+    <text x="440" y="-3" font-family="'Onest', monospace, sans-serif" font-size="8" fill="#C6FF33" font-weight="700">STG 14 [GATE]</text>
+  </g>
+
+  <!-- LEFT: WhatsApp Message Ingress Module -->
+  <g transform="translate(24, 66)">
+    <rect width="168" height="258" rx="4" fill="#15191E" stroke="#222832" stroke-width="1"/>
+    <rect x="0" y="0" width="168" height="26" rx="4" fill="#1E232B"/>
+    <circle cx="14" cy="13" r="4" fill="#C6FF33"/>
+    <text x="26" y="17" font-family="'Onest', sans-serif" font-size="9" font-weight="600" fill="#E4E8EE" letter-spacing="0.08em">WHATSAPP INGRESS</text>
+
+    <!-- Message Bubble 1: Inbound Buyer RFQ -->
+    <rect x="12" y="38" width="144" height="58" rx="4" fill="#0E1013" stroke="#222832" stroke-width="1"/>
+    <text x="20" y="52" font-family="'Onest', monospace, sans-serif" font-size="8" fill="#C6FF33" font-weight="600">MSG_IN: BUYER</text>
+    <text x="20" y="66" font-family="'Onest', sans-serif" font-size="8.5" fill="#E4E8EE">"Need 250 precision CNC</text>
+    <text x="20" y="78" font-family="'Onest', sans-serif" font-size="8.5" fill="#E4E8EE">shafts (EN8 steel) by 15th"</text>
+    <text x="118" y="90" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#8B94A3">09:14</text>
+
+    <!-- Message Bubble 2: Automated System Reply -->
+    <rect x="12" y="106" width="144" height="48" rx="4" fill="#1E232B" stroke="#222832" stroke-width="0.8"/>
+    <text x="20" y="120" font-family="'Onest', monospace, sans-serif" font-size="8" fill="#00E5FF">SYS_BOT: DISPATCHED</text>
+    <text x="20" y="133" font-family="'Onest', sans-serif" font-size="8.5" fill="#8B94A3">RFQ parsed → 4 vendors</text>
+    <text x="20" y="145" font-family="'Onest', sans-serif" font-size="8.5" fill="#8B94A3">Bids matrix aggregating...</text>
+
+    <!-- Neonize Socket / Event Emitter Bridge -->
+    <rect x="12" y="164" width="144" height="52" rx="4" fill="#0E1013" stroke="#222832" stroke-width="1"/>
+    <text x="20" y="178" font-family="'Onest', monospace, sans-serif" font-size="8" fill="#8B94A3">BRIDGE: NEONIZE-WS</text>
+    <text x="20" y="192" font-family="'Onest', monospace, sans-serif" font-size="9" font-weight="600" fill="#E4E8EE">emit("rfq.created")</text>
+    <text x="20" y="206" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#C6FF33" font-weight="600">ASYNC EVENT DISPATCHED</text>
+
+    <!-- Ingress Status Bar -->
+    <line x1="12" y1="228" x2="156" y2="228" stroke="#222832" stroke-width="0.75"/>
+    <text x="14" y="244" font-family="'Onest', monospace, sans-serif" font-size="8" fill="#8B94A3">LATENCY: 142ms // 2FA OK</text>
+  </g>
+
+  <!-- Bus Flow Connecting Paths -->
+  <path d="M 192 110 L 222 110" fill="none" stroke="#8B94A3" stroke-width="1.5" marker-end="url(#sme-arr-steel)"/>
+  <path d="M 374 110 L 404 110" fill="none" stroke="#8B94A3" stroke-width="1.5" marker-end="url(#sme-arr-steel)"/>
+  <path d="M 488 142 L 488 164" fill="none" stroke="#C6FF33" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#sme-arr-lime)"/>
+  <path d="M 370 236 L 400 236" fill="none" stroke="#00E5FF" stroke-width="1.5" marker-end="url(#sme-arr-cyan)"/>
+
+  <!-- TOP RIGHT: Stage 01 RFQ & Stage 06 Quote Matrix -->
+  <!-- Stage 01: RFQ -->
+  <g transform="translate(224, 76)">
+    <rect width="150" height="68" rx="4" fill="#15191E" stroke="#222832" stroke-width="1"/>
+    <text x="14" y="20" font-family="'Onest', monospace, sans-serif" font-size="8" fill="#8B94A3" letter-spacing="0.1em">STAGE 01 // INTAKE</text>
+    <text x="14" y="36" font-family="'Onest', sans-serif" font-size="11" font-weight="600" fill="#E4E8EE">RFQ Auto-Parse</text>
+    <text x="14" y="52" font-family="'Onest', sans-serif" font-size="8.5" fill="#8B94A3">Specs &amp; tolerance verification</text>
+  </g>
+
+  <!-- Stage 06: Quotes Matrix -->
+  <g transform="translate(406, 76)">
+    <rect width="210" height="68" rx="4" fill="#15191E" stroke="#222832" stroke-width="1"/>
+    <text x="14" y="20" font-family="'Onest', monospace, sans-serif" font-size="8" fill="#8B94A3" letter-spacing="0.1em">STAGE 06 // AGGREGATION</text>
+    <text x="14" y="36" font-family="'Onest', sans-serif" font-size="11" font-weight="600" fill="#E4E8EE">Quote Matrix (4 Vendors)</text>
+    <text x="14" y="52" font-family="'Onest', sans-serif" font-size="8.5" fill="#8B94A3">Ranked: Price · Quality · ETA</text>
+  </g>
+
+  <!-- MIDDLE: HIGHLIGHTED #C6FF33 APPROVAL GATE (STAGE 14) -->
+  <g transform="translate(224, 166)">
+    <!-- Gate Box with Electric Lime Border & Glow -->
+    <rect width="392" height="76" rx="5" fill="url(#sme-lime-glow)"/>
+    <rect width="392" height="76" rx="5" fill="#15191E" fill-opacity="0.9" stroke="#C6FF33" stroke-width="1.75"/>
+    
+    <!-- Corner Accents in Cyan -->
+    <path d="M 6 1 L 1 1 L 1 6" fill="none" stroke="#00E5FF" stroke-width="2"/>
+    <path d="M 386 1 L 391 1 L 391 6" fill="none" stroke="#00E5FF" stroke-width="2"/>
+    <path d="M 6 75 L 1 75 L 1 70" fill="none" stroke="#00E5FF" stroke-width="2"/>
+    <path d="M 386 75 L 391 75 L 391 70" fill="none" stroke="#00E5FF" stroke-width="2"/>
+
+    <!-- Gate Header & Badge -->
+    <rect x="14" y="10" width="180" height="18" rx="3" fill="#0E1013" stroke="#C6FF33" stroke-width="0.8"/>
+    <circle cx="24" cy="19" r="3.5" fill="#C6FF33"/>
+    <text x="32" y="23" font-family="'Onest', monospace, sans-serif" font-size="8.5" font-weight="700" fill="#C6FF33" letter-spacing="0.08em">STAGE 14: APPROVAL GATE</text>
+
+    <text x="242" y="23" font-family="'Onest', monospace, sans-serif" font-size="8" fill="#00E5FF" letter-spacing="0.08em">AUTH: HUMAN-IN-THE-LOOP</text>
+
+    <!-- Gate Core Body -->
+    <text x="14" y="46" font-family="'Onest', sans-serif" font-size="13" font-weight="600" fill="#E4E8EE">Procurement Head Authorization</text>
+    <text x="14" y="62" font-family="'Onest', sans-serif" font-size="9" fill="#8B94A3">Deterministic audit log locked · WA Interactive Callback: [CONFIRM PO / REVISE]</text>
+
+    <!-- Shield / Gate Icon in Cyan -->
+    <rect x="338" y="32" width="40" height="32" rx="3" fill="#0E1013" stroke="#00E5FF" stroke-width="1"/>
+    <path d="M 358 37 L 370 41 L 370 51 C 370 58 358 61 358 61 C 358 61 346 58 346 51 L 346 41 Z" fill="none" stroke="#00E5FF" stroke-width="1.2"/>
+    <path d="M 353 49 L 357 53 L 364 45" fill="none" stroke="#C6FF33" stroke-width="1.2"/>
+  </g>
+
+  <!-- BOTTOM: Stage 18 PO & Fulfillment -->
+  <g transform="translate(224, 260)">
+    <rect width="392" height="64" rx="4" fill="#15191E" stroke="#222832" stroke-width="1"/>
+    <text x="14" y="20" font-family="'Onest', monospace, sans-serif" font-size="8" fill="#8B94A3" letter-spacing="0.1em">STAGE 18 // SETTLEMENT &amp; SHIPMENT</text>
+    <text x="14" y="38" font-family="'Onest', sans-serif" font-size="12" font-weight="600" fill="#E4E8EE">PO Dispatched &amp; Live Shipment Tracking</text>
+    <text x="14" y="53" font-family="'Onest', monospace, sans-serif" font-size="8.5" fill="#8B94A3">PDF PO #PO-2026-981 generated · Webhook tracking ID: WA-TRK-771</text>
+    <!-- Success pill in Cyan -->
+    <rect x="306" y="24" width="74" height="20" rx="3" fill="#0E1013" stroke="#00E5FF" stroke-width="0.8"/>
+    <text x="316" y="38" font-family="'Onest', monospace, sans-serif" font-size="8.5" font-weight="700" fill="#00E5FF">COMPLETED</text>
+  </g>
+
+  <!-- Bottom subtle tone overlay -->
+  <rect x="0" y="340" width="640" height="20" fill="linear-gradient(to bottom, transparent, #0E1013)" opacity="0.6"/>
+</svg>
+</div>
+<div class="vr">
+  <div class="vr-header">
+    <div>
+      <h3>SME Anchor</h3>
+      <p class="vr-desc">AI operations platform linking Sales, Planning, and Procurement for manufacturing MSMEs through real-time WhatsApp.</p>
+    </div>
+    <a href="https://drive.google.com/drive/folders/1xZgQZsnmG3wL6761uAHCWfR_pjiy8_SG?usp=sharing" target="_blank" rel="noopener noreferrer" class="demo-btn btn-magnetic">Project Demo <em>↗</em></a>
+  </div>
+  <ul class="vr-bullets">
+    <li>Connects <strong>Sales → Planning → Procurement</strong> via real-time WhatsApp using <strong>Next.js, TypeScript, PostgreSQL, Prisma, and Neonize</strong> (deterministic JID-to-supplier mapping).</li>
+    <li>Automates <strong>18 procurement lifecycle stages</strong> (supplier discovery, RFQ generation, quotation extraction, ranking, human-in-the-loop approval, PO creation, shipment tracking) with AI quotation comparison and margin estimation.</li>
+  </ul>
+  <div class="vr-meta">
+    <span class="tag-label">Runner-up Coimbatore Innovation Hackathon (CIH’26)</span>
+    <span class="rt-badge">18 Lifecycle Stages</span>
+  </div>
+  <div class="cat">TypeScript · Python · Next.js · PostgreSQL · Prisma ORM · Neonize</div>
+</div></article></li>
+
+<!-- Project 2: Q-Catalyst -->
+<li class="rv" style="--i:1"><article>
+<div class="pic">
+<svg viewBox="0 0 640 360" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Q-Catalyst: Molecular protein folding lattice and free energy landscape" style="background:#15191E;display:block">
+  <defs>
+    <pattern id="qc-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#222832" stroke-width="0.75" stroke-opacity="0.65"/>
+    </pattern>
+    <radialGradient id="qc-active-pocket" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C6FF33" stop-opacity="0.28"/>
+      <stop offset="60%" stop-color="#00E5FF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#15191E" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="qc-barrier-fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C6FF33" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#00E5FF" stop-opacity="0.02"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="640" height="360" fill="#0E1013"/>
+  <rect width="640" height="360" fill="url(#qc-grid)"/>
+
+  <!-- Top Telemetry Header Bar -->
+  <rect x="0" y="0" width="640" height="32" fill="#15191E" stroke="#222832" stroke-width="1"/>
+  <text x="24" y="20" font-family="'Onest', monospace, sans-serif" font-size="9.5" font-weight="600" fill="#8B94A3" letter-spacing="0.15em">MECHANISM-AWARE PIPELINE // PETase MUTANT VALIDATION</text>
+  <rect x="435" y="7" width="181" height="18" rx="3" fill="#0E1013" stroke="#C6FF33" stroke-width="1"/>
+  <text x="445" y="20" font-family="'Onest', monospace, sans-serif" font-size="8.5" font-weight="700" fill="#C6FF33" letter-spacing="0.08em">SPEARMAN ρ: 0.5304 (p=5.5e-6)</text>
+
+  <!-- LEFT SECTION: Molecular/Protein Folding Lattice (Binding Pocket) -->
+  <g transform="translate(24, 46)">
+    <!-- Container -->
+    <rect width="288" height="288" rx="4" fill="#15191E" stroke="#222832" stroke-width="1"/>
+    <text x="14" y="20" font-family="'Onest', monospace, sans-serif" font-size="8.5" font-weight="600" fill="#8B94A3" letter-spacing="0.1em">CATALYTIC TRIAD LATTICE (ACTIVE POCKET)</text>
+    <text x="14" y="32" font-family="'Onest', sans-serif" font-size="8" fill="#8B94A3">IsPETase wild-type vs. engineered pocket geometry</text>
+
+    <!-- Active Pocket Aura in Electric Lime -->
+    <ellipse cx="144" cy="154" rx="84" ry="68" fill="url(#qc-active-pocket)"/>
+    <ellipse cx="144" cy="154" rx="84" ry="68" fill="none" stroke="#C6FF33" stroke-width="1" stroke-dasharray="3 3" opacity="0.75"/>
+    <text x="96" y="104" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#C6FF33" font-weight="600">CATALYTIC CAVITY</text>
+
+    <!-- Protein Backbone Ribbon Skeleton -->
+    <path d="M 30 240 C 60 210, 80 180, 110 160 C 140 140, 180 130, 220 90 C 240 70, 260 50, 270 40" fill="none" stroke="#222832" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 40 100 C 80 130, 120 150, 150 190 C 180 230, 210 240, 260 250" fill="none" stroke="#1E232B" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Catalytic Triad Residues & Mutants -->
+    <!-- Ser160 (Nucleophile) -->
+    <g transform="translate(108, 145)">
+      <circle cx="0" cy="0" r="5" fill="#E4E8EE" stroke="#0E1013" stroke-width="1.5"/>
+      <text x="-32" y="-8" font-family="'Onest', monospace, sans-serif" font-size="8.5" font-weight="600" fill="#E4E8EE">Ser160</text>
+      <text x="-48" y="2" font-family="'Onest', monospace, sans-serif" font-size="7" fill="#8B94A3">Oγ (attack)</text>
+    </g>
+
+    <!-- His237 (Base) -->
+    <g transform="translate(196, 128)">
+      <circle cx="0" cy="0" r="5" fill="#E4E8EE" stroke="#0E1013" stroke-width="1.5"/>
+      <text x="8" y="-4" font-family="'Onest', monospace, sans-serif" font-size="8.5" font-weight="600" fill="#E4E8EE">His237</text>
+      <text x="8" y="6" font-family="'Onest', monospace, sans-serif" font-size="7" fill="#8B94A3">Nε2 proton</text>
+    </g>
+
+    <!-- Asp206 (Stabilizer) -->
+    <g transform="translate(162, 216)">
+      <circle cx="0" cy="0" r="5" fill="#E4E8EE" stroke="#0E1013" stroke-width="1.5"/>
+      <text x="8" y="14" font-family="'Onest', monospace, sans-serif" font-size="8.5" font-weight="600" fill="#E4E8EE">Asp206</text>
+      <text x="8" y="24" font-family="'Onest', monospace, sans-serif" font-size="7" fill="#8B94A3">Oδ carboxyl</text>
+    </g>
+
+    <!-- Hydrogen Bond Vectors -->
+    <line x1="113" y1="145" x2="191" y2="128" stroke="#8B94A3" stroke-width="1.2" stroke-dasharray="3 2"/>
+    <text x="136" y="132" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#C6FF33">2.84 Å</text>
+
+    <line x1="196" y1="133" x2="162" y2="211" stroke="#8B94A3" stroke-width="1.2" stroke-dasharray="3 2"/>
+    <text x="184" y="178" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#00E5FF">2.68 Å</text>
+
+    <!-- Mutated Catalytic Site: S238F & W159H -->
+    <!-- S238F Benzene ring lattice in Lime -->
+    <g transform="translate(222, 186)">
+      <polygon points="0,-12 10,-6 10,6 0,12 -10,6 -10,-6" fill="#0E1013" stroke="#C6FF33" stroke-width="1.5"/>
+      <circle cx="0" cy="0" r="3" fill="#C6FF33"/>
+      <line x1="-12" y1="-8" x2="-24" y2="-18" stroke="#C6FF33" stroke-width="1" stroke-dasharray="2 2"/>
+      <text x="-6" y="22" font-family="'Onest', monospace, sans-serif" font-size="8" font-weight="700" fill="#C6FF33">MUT: S238F</text>
+      <text x="-6" y="31" font-family="'Onest', sans-serif" font-size="7" fill="#8B94A3">π-stacking clamp</text>
+    </g>
+
+    <!-- Substrate coordination axis in Cyan -->
+    <path d="M 60 170 Q 110 180 144 154" fill="none" stroke="#00E5FF" stroke-width="1.5"/>
+    <circle cx="60" cy="170" r="3.5" fill="#00E5FF"/>
+    <text x="40" y="194" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#00E5FF" font-weight="600">MUT: W159H</text>
+
+    <!-- Bottom spec line -->
+    <line x1="14" y1="262" x2="274" y2="262" stroke="#222832" stroke-width="0.75"/>
+    <text x="14" y="276" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#8B94A3">DFT B3LYP/6-31G* // CASCI (10e,10o) ACTIVE SPACE</text>
+  </g>
+
+  <!-- RIGHT SECTION: Free Energy Landscape Curve & Spearman Inset -->
+  <g transform="translate(328, 46)">
+    <!-- Container -->
+    <rect width="288" height="288" rx="4" fill="#15191E" stroke="#222832" stroke-width="1"/>
+    <text x="16" y="20" font-family="'Onest', monospace, sans-serif" font-size="8.5" font-weight="600" fill="#8B94A3" letter-spacing="0.1em">FREE ENERGY PROFILE (ΔG‡)</text>
+    <text x="16" y="32" font-family="'Onest', sans-serif" font-size="8" fill="#8B94A3">Wild-type vs. engineered mutant activation barrier</text>
+
+    <!-- Graph Axes -->
+    <line x1="36" y1="48" x2="36" y2="216" stroke="#222832" stroke-width="1.2"/>
+    <line x1="36" y1="216" x2="264" y2="216" stroke="#222832" stroke-width="1.2"/>
+
+    <text x="8" y="54" font-family="'Onest', monospace, sans-serif" font-size="7" fill="#8B94A3">ΔG‡</text>
+    <text x="4" y="64" font-family="'Onest', monospace, sans-serif" font-size="6.5" fill="#8B94A3">kcal/mol</text>
+    <text x="170" y="228" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#8B94A3">Reaction Coord (ξ) →</text>
+
+    <!-- Horizontal reference guide lines -->
+    <line x1="36" y1="84" x2="264" y2="84" stroke="#222832" stroke-width="0.5" stroke-dasharray="2 4"/>
+    <text x="18" y="87" font-family="'Onest', monospace, sans-serif" font-size="7" fill="#8B94A3">20</text>
+    <line x1="36" y1="126" x2="264" y2="126" stroke="#222832" stroke-width="0.5" stroke-dasharray="2 4"/>
+    <text x="18" y="129" font-family="'Onest', monospace, sans-serif" font-size="7" fill="#8B94A3">15</text>
+    <line x1="36" y1="168" x2="264" y2="168" stroke="#222832" stroke-width="0.5" stroke-dasharray="2 4"/>
+    <text x="18" y="171" font-family="'Onest', monospace, sans-serif" font-size="7" fill="#8B94A3">10</text>
+
+    <!-- Curve 1: Wild-Type PETase (Higher Barrier, in Slate Steel #8B94A3) -->
+    <path d="M 40 196 C 70 194, 90 84, 128 84 C 166 84, 180 180, 240 186" fill="none" stroke="#8B94A3" stroke-width="1.75" stroke-dasharray="4 3"/>
+    <circle cx="128" cy="84" r="3" fill="#8B94A3"/>
+    <text x="136" y="82" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#8B94A3">WT: 19.8 kcal/mol</text>
+
+    <!-- Curve 2: Engineered Mutant (Lower Barrier in Electric Acid Lime #C6FF33) -->
+    <path d="M 40 196 C 70 194, 96 124, 128 124 C 160 124, 176 190, 240 196 L 240 216 L 40 216 Z" fill="url(#qc-barrier-fill)"/>
+    <path d="M 40 196 C 70 194, 96 124, 128 124 C 160 124, 176 190, 240 196" fill="none" stroke="#C6FF33" stroke-width="2.5"/>
+    <circle cx="128" cy="124" r="4" fill="#C6FF33"/>
+    <text x="136" y="122" font-family="'Onest', monospace, sans-serif" font-size="8" font-weight="700" fill="#C6FF33">Mutant: 15.6 kcal/mol</text>
+
+    <!-- Delta Delta G Dimension Bracket in Cyan -->
+    <line x1="128" y1="88" x2="128" y2="120" stroke="#00E5FF" stroke-width="1.2"/>
+    <polyline points="125,92 128,88 131,92" fill="none" stroke="#00E5FF" stroke-width="1.2"/>
+    <polyline points="125,116 128,120 131,116" fill="none" stroke="#00E5FF" stroke-width="1.2"/>
+    <!-- Delta Label Box -->
+    <rect x="52" y="98" width="68" height="16" rx="2" fill="#0E1013" stroke="#00E5FF" stroke-width="0.8"/>
+    <text x="56" y="109" font-family="'Onest', monospace, sans-serif" font-size="7.5" font-weight="700" fill="#00E5FF">ΔΔG‡: -4.2</text>
+
+    <!-- Mini Correlation Inset Box -->
+    <rect x="36" y="238" width="236" height="42" rx="3" fill="#0E1013" stroke="#222832" stroke-width="0.8"/>
+    <circle cx="50" cy="265" r="1.5" fill="#8B94A3"/>
+    <circle cx="62" cy="260" r="1.5" fill="#8B94A3"/>
+    <circle cx="74" cy="256" r="1.5" fill="#8B94A3"/>
+    <circle cx="86" cy="250" r="2" fill="#C6FF33"/>
+    <circle cx="98" cy="248" r="1.5" fill="#00E5FF"/>
+    <line x1="46" y1="268" x2="104" y2="246" stroke="#C6FF33" stroke-width="1" stroke-dasharray="2 2"/>
+    <!-- Inset Text -->
+    <text x="114" y="254" font-family="'Onest', monospace, sans-serif" font-size="8.5" font-weight="700" fill="#E4E8EE">Spearman ρ = 0.5304</text>
+    <text x="114" y="268" font-family="'Onest', sans-serif" font-size="7.5" fill="#8B94A3">Held-out test set (N=65) · p = 5.5×10⁻⁶</text>
+  </g>
+</svg>
+</div>
+<div class="vr">
+  <div class="vr-header">
+    <div>
+      <h3>Q-Catalyst</h3>
+      <p class="vr-desc">Mechanism-aware AI platform for PETase enzyme engineering and combinatorial mutant prioritization.</p>
+    </div>
+    <a href="https://q-catalyst-xi.vercel.app/" target="_blank" rel="noopener noreferrer" class="demo-btn btn-magnetic">Live Demo <em>↗</em></a>
+  </div>
+  <ul class="vr-bullets">
+    <li>Combines <strong>ESM-2 embeddings, ESM-1v zero-shot scoring</strong>, uncertainty estimation, and catalytic-site structural validation.</li>
+    <li>Ridge Regression &amp; XGBoost on ESM-2 features achieved <strong>Spearman 0.5304 (p = 5.5×10⁻⁶)</strong> on a leakage-controlled held-out set of <strong>65 combinatorial mutants</strong>.</li>
+    <li>Includes <strong>PySCF (DFT &amp; active-space CASCI)</strong> catalytic-site calculations and explicit-solvent <strong>OpenMM</strong> molecular dynamics validation for WT IsPETase (5XJH), FAST-PETase (7SH6), and engineered candidates.</li>
+  </ul>
+  <div class="vr-meta">
+    <span class="tag-label">Leakage-Controlled Test Set (N=65)</span>
+    <span class="rt-badge">Spearman ρ = 0.5304</span>
+  </div>
+  <div class="cat">ESM-2 · ESM-1v · PySCF (DFT/CASCI) · OpenMM · XGBoost · FastAPI · RDKit</div>
+</div></article></li>
+
+<!-- Project 3: SONAR-INTEL -->
+<li class="rv"><article>
+<div class="pic">
+<svg viewBox="0 0 640 360" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SONAR-INTEL: Side-scan sonar bathymetry waterfall and ghost-net detection" style="background:#0E1013;display:block">
+  <defs>
+    <pattern id="sonar-scanlines" width="640" height="4" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="2" x2="640" y2="2" stroke="#222832" stroke-width="0.6" stroke-opacity="0.8"/>
+    </pattern>
+    <radialGradient id="net-echo-aura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C6FF33" stop-opacity="0.3"/>
+      <stop offset="60%" stop-color="#00E5FF" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#0E1013" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="640" height="360" fill="#0E1013"/>
+  <rect width="640" height="360" fill="url(#sonar-scanlines)"/>
+
+  <!-- Top Telemetry Header Bar -->
+  <rect x="0" y="0" width="640" height="32" fill="#15191E" stroke="#222832" stroke-width="1"/>
+  <text x="24" y="20" font-family="'Onest', monospace, sans-serif" font-size="9.5" font-weight="600" fill="#8B94A3" letter-spacing="0.15em">SIDE-SCAN SONAR WATERFALL // DISTILLED YOLO11N-EDGE</text>
+  <rect x="468" y="7" width="148" height="18" rx="3" fill="#0E1013" stroke="#C6FF33" stroke-width="1"/>
+  <text x="478" y="20" font-family="'Onest', monospace, sans-serif" font-size="8.5" font-weight="700" fill="#C6FF33" letter-spacing="0.08em">84.8% mAP@50 (EDGE)</text>
+
+  <!-- Waterfall Main Viewport (Swath) -->
+  <g transform="translate(24, 40)">
+    <!-- Swath Frame -->
+    <rect width="592" height="280" rx="4" fill="#15191E" fill-opacity="0.85" stroke="#222832" stroke-width="1"/>
+
+    <!-- Central Nadir Track (Dead zone under the towfish) -->
+    <rect x="286" y="0" width="20" height="280" fill="#0E1013"/>
+    <line x1="296" y1="0" x2="296" y2="280" stroke="#222832" stroke-width="1" stroke-dasharray="4 4"/>
+    <text x="293" y="145" font-family="'Onest', monospace, sans-serif" font-size="7" fill="#8B94A3" transform="rotate(-90 293 145)" letter-spacing="0.2em">NADIR TRACK (0m)</text>
+
+    <!-- PORT CHANNEL (Left: 0m to 60m) -->
+    <path d="M 10 40 Q 80 50 160 35 T 286 45" fill="none" stroke="#222832" stroke-width="1.2"/>
+    <path d="M 10 95 Q 100 110 180 85 T 286 100" fill="none" stroke="#222832" stroke-width="1"/>
+    <path d="M 10 160 Q 120 180 200 155 T 286 170" fill="none" stroke="#222832" stroke-width="1.2"/>
+    <path d="M 10 220 Q 90 235 170 215 T 286 230" fill="none" stroke="#222832" stroke-width="1"/>
+
+    <!-- Acoustic Clutter on Port: Rocky Reef Formation (Suppressed) -->
+    <g transform="translate(70, 110)">
+      <polygon points="0,20 110,40 110,80 0,45" fill="#0E1013" opacity="0.9"/>
+      <polygon points="0,20 25,10 65,15 105,8 110,25 0,22" fill="#1E232B" stroke="#8B94A3" stroke-width="0.8"/>
+      <text x="10" y="4" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#8B94A3">[REEF CLUTTER — SUPPRESSED]</text>
+      <text x="10" y="60" font-family="'Onest', monospace, sans-serif" font-size="7" fill="#8B94A3">Confidence: 0.12 (Non-target)</text>
+    </g>
+
+    <!-- STARBOARD CHANNEL (Right: 0m to 60m) -->
+    <path d="M 306 45 Q 400 35 480 55 T 582 40" fill="none" stroke="#222832" stroke-width="1.2"/>
+    <path d="M 306 100 Q 390 120 490 95 T 582 105" fill="none" stroke="#222832" stroke-width="1"/>
+    <path d="M 306 170 Q 420 155 510 180 T 582 165" fill="none" stroke="#222832" stroke-width="1.2"/>
+    <path d="M 306 230 Q 380 245 470 225 T 582 235" fill="none" stroke="#222832" stroke-width="1"/>
+
+    <!-- TARGET: SUBMERGED GHOST-NET DETECTION -->
+    <g transform="translate(365, 80)">
+      <!-- Acoustic shadow trailing target -->
+      <polygon points="20,50 160,50 185,110 35,110" fill="#0E1013" opacity="0.95"/>
+      <text x="45" y="80" font-family="'Onest', monospace, sans-serif" font-size="7" fill="#8B94A3" letter-spacing="0.1em">ACOUSTIC SHADOW ZONE</text>
+
+      <!-- Tangled Ghost-Net Filament Texture -->
+      <ellipse cx="90" cy="35" rx="65" ry="25" fill="url(#net-echo-aura)"/>
+      <path d="M 40 35 Q 60 20 85 38 T 130 30 T 150 40" fill="none" stroke="#C6FF33" stroke-width="1.5"/>
+      <path d="M 45 42 Q 70 28 100 45 T 140 34" fill="none" stroke="#00E5FF" stroke-width="1.2"/>
+      <path d="M 55 28 Q 90 44 120 26 T 145 36" fill="none" stroke="#C6FF33" stroke-width="1"/>
+      <circle cx="65" cy="32" r="1.5" fill="#C6FF33"/>
+      <circle cx="95" cy="40" r="1.5" fill="#00E5FF"/>
+      <circle cx="125" cy="31" r="1.5" fill="#C6FF33"/>
+
+      <!-- HIGHLIGHTED #C6FF33 BOUNDING BOX WITH CYAN NOTCHES -->
+      <rect x="18" y="4" width="160" height="98" rx="2" fill="none" stroke="#C6FF33" stroke-width="1.75"/>
+      <!-- Technical Corner Brackets in Cyan -->
+      <path d="M 28 4 L 18 4 L 18 14" fill="none" stroke="#00E5FF" stroke-width="2.5"/>
+      <path d="M 168 4 L 178 4 L 178 14" fill="none" stroke="#00E5FF" stroke-width="2.5"/>
+      <path d="M 28 102 L 18 102 L 18 92" fill="none" stroke="#00E5FF" stroke-width="2.5"/>
+      <path d="M 168 102 L 178 102 L 178 92" fill="none" stroke="#00E5FF" stroke-width="2.5"/>
+
+      <!-- Crosshair Target Reticle -->
+      <line x1="98" y1="36" x2="98" y2="46" stroke="#00E5FF" stroke-width="1"/>
+      <line x1="93" y1="41" x2="103" y2="41" stroke="#00E5FF" stroke-width="1"/>
+
+      <!-- Target Header Badge in Acid Lime -->
+      <rect x="18" y="-12" width="160" height="16" rx="2" fill="#C6FF33"/>
+      <text x="24" y="0" font-family="'Onest', monospace, sans-serif" font-size="8.5" font-weight="700" fill="#0E1013">★ TARGET: GHOST_NET // 0.942</text>
+
+      <!-- Target Sub-Telemetry Box in Cyan -->
+      <rect x="18" y="106" width="160" height="28" rx="2" fill="#0E1013" stroke="#222832" stroke-width="0.8"/>
+      <text x="24" y="118" font-family="'Onest', monospace, sans-serif" font-size="7.5" font-weight="700" fill="#E4E8EE">YOLO11N: 84.8% mAP@50</text>
+      <text x="24" y="128" font-family="'Onest', monospace, sans-serif" font-size="7" fill="#00E5FF">P: 90.2% · R: 81.7% · 6.2ms Latency</text>
+    </g>
+
+    <!-- Bottom Sonar Range Ruler Scale -->
+    <g transform="translate(0, 258)">
+      <rect width="592" height="22" fill="#0E1013" stroke="#222832" stroke-width="0.75"/>
+      <line x1="20" y1="5" x2="572" y2="5" stroke="#222832" stroke-width="1"/>
+      <text x="18" y="17" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#8B94A3">-60m [PORT]</text>
+      <text x="140" y="17" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#8B94A3">-30m</text>
+      <text x="282" y="17" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#E4E8EE">0m [NADIR]</text>
+      <text x="430" y="17" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#8B94A3">+30m</text>
+      <text x="500" y="17" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#C6FF33" font-weight="700">+60m [STARBOARD]</text>
+    </g>
+  </g>
+</svg>
+</div>
+<div class="vr">
+  <div class="vr-header">
+    <div>
+      <h3>SONAR-INTEL</h3>
+      <p class="vr-desc">Evidence-prioritized ghost net triage and detection system from acoustic side-scan sonar.</p>
+    </div>
+    <a href="https://sonar-intel-rho.vercel.app/" target="_blank" rel="noopener noreferrer" class="demo-btn btn-magnetic">Live Demo <em>↗</em></a>
+  </div>
+  <ul class="vr-bullets">
+    <li>Triage pipeline across <strong>9,356 side-scan sonar tiles</strong> (Lee denoising, standardized tiling, reconstruction checks) separating ghost nets from rocks, cables, and fish schools for human review.</li>
+    <li>Distilled a <strong>YOLO11M teacher into a YOLO11N student</strong> (PyTorch, Ultralytics) for edge inference, reaching <strong>84.8% mAP@50, 90.2% precision, and 81.7% recall</strong> (epoch 21).</li>
+    <li>Edge-to-backend analyst confirm / reject / export workflow with deterministic evidence ranking.</li>
+  </ul>
+  <div class="vr-meta">
+    <span class="tag-label">9,356 Sonar Tiles Triaged</span>
+    <span class="rt-badge">84.8% mAP@50 · 90.2% P · 81.7% R</span>
+  </div>
+  <div class="cat">PyTorch · Ultralytics YOLO11 · Knowledge Distillation · Edge AI · OpenCV</div>
+</div></article></li>
+
+<!-- Project 4: FraudSentinel AI -->
+<li class="rv" style="--i:1"><article>
+<div class="pic">
+<svg viewBox="0 0 640 360" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FraudSentinel AI: Real-time transaction anomaly scatter plot and threshold graph" style="background:#15191E;display:block">
+  <defs>
+    <pattern id="fs-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#222832" stroke-width="0.75" stroke-opacity="0.65"/>
+    </pattern>
+    <linearGradient id="fs-danger-zone" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#C6FF33" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#00E5FF" stop-opacity="0.2"/>
+    </linearGradient>
+    <radialGradient id="fs-outlier-pulse" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C6FF33" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#00E5FF" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#15191E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="640" height="360" fill="#0E1013"/>
+  <rect width="640" height="360" fill="url(#fs-grid)"/>
+
+  <!-- Top Telemetry Header Bar -->
+  <rect x="0" y="0" width="640" height="32" fill="#15191E" stroke="#222832" stroke-width="1"/>
+  <text x="24" y="20" font-family="'Onest', monospace, sans-serif" font-size="9.5" font-weight="600" fill="#8B94A3" letter-spacing="0.15em">HYBRID FRAUD DETECTION // REAL-TIME ANOMALY SCATTER</text>
+  <rect x="465" y="7" width="151" height="18" rx="3" fill="#0E1013" stroke="#C6FF33" stroke-width="1"/>
+  <text x="475" y="20" font-family="'Onest', monospace, sans-serif" font-size="8.5" font-weight="700" fill="#C6FF33" letter-spacing="0.08em">FPR: 0.03% // 284K+ TX</text>
+
+  <!-- Main Graph Canvas -->
+  <g transform="translate(24, 46)">
+    <!-- Container -->
+    <rect width="592" height="288" rx="4" fill="#15191E" stroke="#222832" stroke-width="1"/>
+
+    <!-- Graph Axes -->
+    <line x1="56" y1="36" x2="56" y2="236" stroke="#222832" stroke-width="1.2"/>
+    <line x1="56" y1="236" x2="568" y2="236" stroke="#222832" stroke-width="1.2"/>
+
+    <text x="14" y="42" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#8B94A3">Score σ</text>
+    <text x="16" y="52" font-family="'Onest', monospace, sans-serif" font-size="6.5" fill="#8B94A3">(Anomaly)</text>
+    <text x="430" y="250" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#8B94A3">Transaction Feature Velocity (PCA-1) →</text>
+
+    <!-- Y-Axis Ticks & Gridlines -->
+    <text x="32" y="48" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#8B94A3">1.00</text>
+    <line x1="56" y1="46" x2="568" y2="46" stroke="#222832" stroke-width="0.5" stroke-dasharray="2 4"/>
+
+    <!-- 0.75 Anomaly Threshold Zone -->
+    <rect x="56" y="46" width="512" height="66" fill="url(#fs-danger-zone)"/>
+    <line x1="56" y1="112" x2="568" y2="112" stroke="#C6FF33" stroke-width="1.75" stroke-dasharray="6 4"/>
+    <rect x="64" y="102" width="220" height="16" rx="2" fill="#0E1013" stroke="#C6FF33" stroke-width="0.8"/>
+    <text x="70" y="113" font-family="'Onest', monospace, sans-serif" font-size="7.5" font-weight="700" fill="#C6FF33">FLAGGED ANOMALY THRESHOLD (0.75) • 0.03% FPR</text>
+    <text x="32" y="115" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#C6FF33">0.75</text>
+
+    <!-- 0.50 -->
+    <text x="32" y="156" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#8B94A3">0.50</text>
+    <line x1="56" y1="154" x2="568" y2="154" stroke="#222832" stroke-width="0.5" stroke-dasharray="2 4"/>
+
+    <!-- 0.25 -->
+    <text x="32" y="196" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#8B94A3">0.25</text>
+    <line x1="56" y1="194" x2="568" y2="194" stroke="#222832" stroke-width="0.5" stroke-dasharray="2 4"/>
+
+    <!-- 0.00 -->
+    <text x="32" y="238" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#8B94A3">0.00</text>
+
+    <!-- NORMAL TRANSACTIONS DENSE SCATTER CLUSTER -->
+    <ellipse cx="230" cy="190" rx="140" ry="36" fill="#1E232B" fill-opacity="0.4" stroke="#222832" stroke-width="1"/>
+    <ellipse cx="220" cy="194" rx="80" ry="22" fill="#0E1013" fill-opacity="0.5" stroke="#222832" stroke-width="0.75" stroke-dasharray="2 2"/>
+    <text x="130" y="200" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#8B94A3" letter-spacing="0.08em">NORMAL CLUSTERS (284,000+ TX)</text>
+
+    <!-- Micro Normal Dots Field in Slate Steel -->
+    <g fill="#8B94A3" opacity="0.65">
+      <circle cx="110" cy="195" r="1.5"/><circle cx="118" cy="188" r="1.8"/><circle cx="125" cy="202" r="1.4"/><circle cx="132" cy="192" r="2"/><circle cx="140" cy="185" r="1.5"/>
+      <circle cx="146" cy="198" r="1.8"/><circle cx="154" cy="182" r="1.4"/><circle cx="160" cy="192" r="2.2"/><circle cx="168" cy="206" r="1.5"/><circle cx="175" cy="180" r="1.6"/>
+      <circle cx="182" cy="194" r="2"/><circle cx="188" cy="186" r="1.8"/><circle cx="195" cy="202" r="1.4"/><circle cx="202" cy="178" r="1.7"/><circle cx="208" cy="190" r="2.4"/>
+      <circle cx="215" cy="198" r="1.8"/><circle cx="222" cy="184" r="2.1"/><circle cx="228" cy="192" r="1.5"/><circle cx="235" cy="176" r="1.8"/><circle cx="242" cy="190" r="2.5"/>
+      <circle cx="248" cy="204" r="1.6"/><circle cx="255" cy="182" r="2"/><circle cx="262" cy="194" r="1.7"/><circle cx="268" cy="178" r="1.5"/><circle cx="275" cy="190" r="2.2"/>
+      <circle cx="282" cy="196" r="1.8"/><circle cx="288" cy="184" r="1.6"/><circle cx="295" cy="202" r="1.5"/><circle cx="302" cy="188" r="2"/><circle cx="310" cy="176" r="1.7"/>
+      <circle cx="318" cy="192" r="1.5"/><circle cx="325" cy="206" r="1.8"/><circle cx="332" cy="180" r="1.4"/><circle cx="340" cy="194" r="2.1"/><circle cx="348" cy="186" r="1.7"/>
+      <circle cx="355" cy="200" r="1.5"/><circle cx="362" cy="178" r="1.6"/><circle cx="370" cy="192" r="2.3"/><circle cx="378" cy="184" r="1.8"/><circle cx="385" cy="204" r="1.4"/>
+      <circle cx="395" cy="190" r="1.8"/><circle cx="405" cy="182" r="1.6"/><circle cx="415" cy="198" r="1.4"/><circle cx="425" cy="186" r="1.7"/><circle cx="435" cy="194" r="2"/>
+    </g>
+
+    <!-- FLAGGED OUTLIER SPIKES IN #C6FF33 & #00E5FF -->
+    <!-- Outlier Spike 1 (Primary Detected Fraud Event) -->
+    <g transform="translate(450, 68)">
+      <circle cx="0" cy="0" r="18" fill="url(#fs-outlier-pulse)"/>
+      <circle cx="0" cy="0" r="9" fill="none" stroke="#00E5FF" stroke-width="1.2" stroke-dasharray="2 2"/>
+      <circle cx="0" cy="0" r="5" fill="#C6FF33"/>
+      <!-- Target reticle in Cyan -->
+      <line x1="-8" y1="0" x2="8" y2="0" stroke="#00E5FF" stroke-width="1"/>
+      <line x1="0" y1="-8" x2="0" y2="8" stroke="#00E5FF" stroke-width="1"/>
+
+      <!-- Outlier Callout Box in Cyan -->
+      <path d="M 0 0 L -25 -20 L -180 -20" fill="none" stroke="#00E5FF" stroke-width="1"/>
+      <rect x="-185" y="-38" width="155" height="32" rx="3" fill="#0E1013" stroke="#00E5FF" stroke-width="1"/>
+      <text x="-178" y="-24" font-family="'Onest', monospace, sans-serif" font-size="8" font-weight="700" fill="#C6FF33">★ FLAGGED: OUTLIER_TX_984</text>
+      <text x="-178" y="-12" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#00E5FF">Score: 0.984 | FPR: 0.03%</text>
+    </g>
+
+    <!-- Outlier Spike 2 -->
+    <g transform="translate(525, 78)">
+      <circle cx="0" cy="0" r="8" fill="none" stroke="#00E5FF" stroke-width="0.8"/>
+      <circle cx="0" cy="0" r="4" fill="#C6FF33"/>
+      <text x="-32" y="14" font-family="'Onest', monospace, sans-serif" font-size="7" fill="#C6FF33" font-weight="600">σ: 0.941</text>
+    </g>
+
+    <!-- Outlier Spike 3 -->
+    <g transform="translate(370, 88)">
+      <circle cx="0" cy="0" r="3.5" fill="#C6FF33"/>
+      <text x="-15" y="-6" font-family="'Onest', monospace, sans-serif" font-size="7" fill="#C6FF33">σ: 0.887</text>
+    </g>
+
+    <!-- Outlier Spike 4 -->
+    <g transform="translate(260, 82)">
+      <circle cx="0" cy="0" r="3.5" fill="#C6FF33"/>
+      <text x="-15" y="-6" font-family="'Onest', monospace, sans-serif" font-size="7" fill="#C6FF33">σ: 0.912</text>
+    </g>
+
+    <!-- Outlier Spike 5 -->
+    <g transform="translate(150, 96)">
+      <circle cx="0" cy="0" r="3.5" fill="#C6FF33"/>
+      <text x="-15" y="-6" font-family="'Onest', monospace, sans-serif" font-size="7" fill="#C6FF33">σ: 0.845</text>
+    </g>
+
+    <!-- Bottom Status Bar -->
+    <g transform="translate(0, 262)">
+      <rect width="592" height="26" rx="2" fill="#0E1013" stroke="#222832" stroke-width="0.75"/>
+      <text x="16" y="17" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#8B94A3">FASTAPI + SHAP EXPLAINABILITY ENGINE</text>
+      <text x="240" y="17" font-family="'Onest', monospace, sans-serif" font-size="7.5" fill="#8B94A3">CHROMADB RAG MULE PATTERN RETRIEVAL: <0.8s</text>
+      <text x="495" y="17" font-family="'Onest', monospace, sans-serif" font-size="7.5" font-weight="700" fill="#00E5FF">RECALL: 93.3%</text>
+    </g>
+  </g>
+</svg>
+</div>
+<div class="vr">
+  <div class="vr-header">
+    <div>
+      <h3>FraudSentinel AI</h3>
+      <p class="vr-desc">Hybrid fraud detection and explainability system operating over real-time transaction pipelines.</p>
+    </div>
+    <a href="https://fraudsentinal-ai.onrender.com/" target="_blank" rel="noopener noreferrer" class="demo-btn btn-magnetic">Live Demo <em>↗</em></a>
+  </div>
+  <ul class="vr-bullets">
+    <li>Hybrid pipeline combining <strong>XGBoost, Isolation Forest, ChromaDB RAG, and local Ollama LLM inference</strong> across <strong>284K+ transactions</strong>.</li>
+    <li>Achieved <strong>93.3% recall at 0.03% FPR</strong> via threshold-optimized ensemble scoring.</li>
+    <li>Serves <strong>FastAPI REST APIs</strong> delivering deterministic fraud explanations in <strong>&lt; 1 second</strong> with automated Recall, PR-AUC, and FPR evaluation.</li>
+  </ul>
+  <div class="vr-meta">
+    <span class="tag-label">284K+ Transactions Stream</span>
+    <span class="rt-badge">93.3% Recall @ 0.03% FPR</span>
+  </div>
+  <div class="cat">XGBoost · Isolation Forest · ChromaDB RAG · FastAPI · Ollama · SHAP</div>
+</div></article></li>
+</ul></section>
+
+<!-- Technical Stack Section -->
+<section id="skills">
+<div><div class="eyebrow">Technical Stack</div><h2 class="d big rvh"><span class="ln"><span>What I build with.</span></span></h2></div>
+<div class="sk-grid">
+  <div class="sk-card rv" style="--i:0">
+    <h3>Languages</h3>
+    <div class="sk-pills">
+      <span class="sk-pill">Python (NumPy, Pandas, SciPy)</span>
+      <span class="sk-pill">C</span>
+      <span class="sk-pill">JavaScript</span>
+      <span class="sk-pill">TypeScript</span>
+    </div>
+  </div>
+  <div class="sk-card rv" style="--i:1">
+    <h3>ML &amp; AI</h3>
+    <div class="sk-pills">
+      <span class="sk-pill">PyTorch</span>
+      <span class="sk-pill">Scikit-learn</span>
+      <span class="sk-pill">XGBoost</span>
+      <span class="sk-pill">Ridge Regression</span>
+      <span class="sk-pill">Random Forest</span>
+      <span class="sk-pill">Isolation Forest</span>
+      <span class="sk-pill">SHAP</span>
+      <span class="sk-pill">YOLO11</span>
+      <span class="sk-pill">OpenCV</span>
+      <span class="sk-pill">ESM-2 / ESM-1v</span>
+      <span class="sk-pill">Knowledge Distillation</span>
+      <span class="sk-pill">LLM Integration</span>
+      <span class="sk-pill">RAG Pipelines</span>
+    </div>
+  </div>
+  <div class="sk-card rv" style="--i:2">
+    <h3>Computational Biology &amp; Chemistry</h3>
+    <div class="sk-pills">
+      <span class="sk-pill">Biopython</span>
+      <span class="sk-pill">RDKit</span>
+      <span class="sk-pill">OpenMM</span>
+      <span class="sk-pill">PDBFixer</span>
+      <span class="sk-pill">PySCF (DFT, CASCI)</span>
+      <span class="sk-pill">Molecular Dynamics</span>
+    </div>
+  </div>
+  <div class="sk-card rv" style="--i:3">
+    <h3>Backend &amp; Tools</h3>
+    <div class="sk-pills">
+      <span class="sk-pill">FastAPI</span>
+      <span class="sk-pill">Flask</span>
+      <span class="sk-pill">Node.js</span>
+      <span class="sk-pill">Next.js</span>
+      <span class="sk-pill">PostgreSQL</span>
+      <span class="sk-pill">Prisma ORM</span>
+      <span class="sk-pill">ChromaDB</span>
+      <span class="sk-pill">Docker</span>
+      <span class="sk-pill">Git</span>
+      <span class="sk-pill">Ollama</span>
+      <span class="sk-pill">Neonize</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Numbers Section -->
+<section id="impact">
+<div><div class="eyebrow">By The Numbers</div><h2 class="d big rvh"><span class="ln"><span>Built on real data.</span></span></h2></div>
+<dl class="st">
+<div class="rv" style="--i:0"><dd>284K+</dd><dt>Transactions in the fraud pipeline (0.03% FPR)</dt></div>
+<div class="rv" style="--i:1"><dd>9,356</dd><dt>Sonar tiles triaged (84.8% mAP@50)</dt></div>
+<div class="rv" style="--i:2"><dd>18</dd><dt>Procurement stages automated via WhatsApp</dt></div>
+<div class="rv" style="--i:3"><dd>8.95</dd><dt>CGPA, B.E. CSE (AI &amp; ML), Anna University</dt></div>
+</dl></section>
+
+<!-- Achievements / Wins Section -->
+<section id="wins">
+<div><div class="eyebrow">Achievements &amp; Honors</div><h2 class="d big rvh"><span class="ln"><span>On the board.</span></span></h2></div>
+<div class="grid12" style="margin-top:4rem">
+<ul class="sel c5" id="sel"></ul>
+<div class="c7"><div class="panel">
+  <blockquote><p id="q"></p><footer id="qf"></footer></blockquote>
+  <div class="badge">
+    <small>Competitive Programming</small>
+    <div class="big d">400+</div>
+    <small><b>400+</b> LeetCode Problems<br><b>600+</b> SkillRack Problems<br><b>HackerRank 5★</b> Python &amp; <b>3★</b> C</small>
+  </div>
+</div></div>
+</div></section>
+
+<!-- Certifications & Education Section -->
+<section id="credentials">
+<div><div class="eyebrow">Qualifications</div><h2 class="d big rvh"><span class="ln"><span>Certifications &amp; Education.</span></span></h2></div>
+<div class="grid12" style="margin-top:clamp(2.5rem,5vh,4rem)">
+  <!-- Certifications Column -->
+  <div class="c6 rv" style="--i:0">
+    <div class="cred-box">
+      <div class="cred-header">
+        <h3>Certifications</h3>
+        <a href="https://drive.google.com/drive/folders/1KFO-QpW_kyPe4jmWKocWF-tyLQYS-vG1" target="_blank" rel="noopener noreferrer" class="verify-btn btn-magnetic">Verify Credentials <em>↗</em></a>
+      </div>
+      <div class="cred-list">
+        <div class="cred-item">
+          <h4>DeepLearning.AI Machine Learning Specialization</h4>
+          <p>Supervised Machine Learning, Advanced Learning Algorithms &amp; Unsupervised Learning</p>
+        </div>
+        <div class="cred-item">
+          <h4>AI &amp; Data Science Foundations</h4>
+          <p>Statistical inference, exploratory data analysis, and predictive model pipelines</p>
+        </div>
+        <div class="cred-item">
+          <h4>NPTEL: The Joy of Computing using Python</h4>
+          <p>Algorithmic thinking, complexity analysis, and Pythonic software design</p>
+        </div>
+        <div class="cred-item">
+          <h4>NPTEL: Design Thinking</h4>
+          <p>Human-centered engineering, iterative prototyping, and solution architecture</p>
+        </div>
+        <div class="cred-item">
+          <h4>NPTEL: Understanding Incubation and Entrepreneurship</h4>
+          <p>Product-market validation, intellectual property, and venture lifecycle</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Education Column -->
+  <div class="c6 rv" style="--i:1">
+    <div class="cred-box">
+      <div class="cred-header">
+        <h3>Education</h3>
+      </div>
+      <div class="cred-list">
+        <div class="edu-item">
+          <div class="edu-degree">B.E. Computer Science &amp; Engineering (AI &amp; ML)</div>
+          <div class="edu-meta">
+            <span>Sri Eshwar College of Engineering (Anna University)</span>
+            <span class="edu-cgpa">CGPA: 8.95 / 10.0</span>
+          </div>
+          <div class="edu-meta" style="font-size:.8125rem">
+            <span>Expected Graduation: 2029</span>
+            <span>Coimbatore, Tamil Nadu</span>
+          </div>
+          <p class="edu-desc">Core focus on Machine Learning, Deep Neural Networks, Edge Model Distillation, Mathematical Optimization, and Production Backend Architectures.</p>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-degree">Higher Secondary Certificate (HSC) — Computer Science</div>
+          <div class="edu-meta">
+            <span>Vidhya Vikashini Higher Secondary School</span>
+            <span class="edu-cgpa">Score: 91%</span>
+          </div>
+          <div class="edu-meta" style="font-size:.8125rem">
+            <span>Coimbatore, Tamil Nadu</span>
+          </div>
+          <p class="edu-desc">Rigorous mathematics, physics, and computer science foundation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Contact & Footer Section -->
+<footer id="contact">
+<div class="eyebrow">Let’s Build</div>
+<h2 class="d big rvh"><span class="ln"><span>Have a hard AI problem that has to survive production?</span></span></h2>
+<p class="lead rv">I’m looking for an AI/ML internship and ambitious engineering projects. Send me the problem.</p>
+
+<div class="contact-links rv">
+  <a class="mail btn-magnetic" href="mailto:salmonangelosam@gmail.com">salmonangelosam@gmail.com <em>↗</em></a>
+  <div class="contact-meta">
+    <a class="contact-item" href="tel:+919843560889">
+      <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.68.59 1 1 0 011 1v3.5a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.24 1.02l-2.23 2.09z"/></svg>
+      +91 98435 60889
+    </a>
+    <span class="contact-item">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+      Coimbatore, Tamil Nadu, India
+    </span>
+    <a class="contact-item" href="https://drive.google.com/drive/folders/1KFO-QpW_kyPe4jmWKocWF-tyLQYS-vG1" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+      Certificates Drive ↗
+    </a>
+  </div>
+</div>
+
+<div class="fb">
+  <div style="grid-column:span 6">
+    <p class="sig d">Salmon Angelo S</p>
+    <p class="lbl" style="margin-top:1rem">Coimbatore, Tamil Nadu, India · +91 98435 60889</p>
+  </div>
+  <ul class="c3" style="grid-column:span 3">
+    <li><a href="https://www.linkedin.com/in/salmon-angelo/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
+    <li><a href="https://github.com/salmonangelo" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+  </ul>
+  <p class="lbl r" style="grid-column:span 3;letter-spacing:.18em">© 2026 Salmon Angelo S</p>
+</div></footer>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.19/dist/lenis.min.js"></script>
+<script>
+(function(){
+var FB=16,BW=1920,CO=.6666;
+function grid(){var w=innerWidth,r=(BW-w)/BW*100*CO,s=FB-FB*r/100;if(s>FB)document.documentElement.style.fontSize=s+"px";else document.documentElement.style.removeProperty("font-size")}
+grid();addEventListener("resize",grid);
+var rm=matchMedia("(prefers-reduced-motion:reduce)").matches;
+var lenis=null;try{lenis=new Lenis({smoothWheel:true});(function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(0)}catch(e){}
+if(lenis&&!rm)lenis.stop();
+scrollTo(0,0);
+
+// Top Scroll Progress Bar
+var sb=document.getElementById("scroll-bar");
+function onScroll(){
+  var st=window.pageYOffset||document.documentElement.scrollTop;
+  var dh=document.documentElement.scrollHeight-window.innerHeight;
+  if(dh>0&&sb){sb.style.width=Math.min(100,Math.max(0,(st/dh)*100))+"%"}
+}
+window.addEventListener("scroll",onScroll,{passive:true});
+if(lenis)lenis.on("scroll",onScroll);
+
+// Cursor-tracking hero spotlight & portrait depth parallax
+var topSec=document.getElementById("top");
+var hpImg=document.querySelector("#hp img");
+if(topSec){
+  topSec.addEventListener("mousemove",function(e){
+    var r=topSec.getBoundingClientRect();
+    var x=e.clientX-r.left;
+    var y=e.clientY-r.top;
+    topSec.style.setProperty("--mx",x+"px");
+    topSec.style.setProperty("--my",y+"px");
+    if(hpImg&&!rm){
+      var px=((x-r.width/2)/(r.width/2))*4;
+      var py=((y-r.height/2)/(r.height/2))*4;
+      hpImg.style.transform="translate3d("+px.toFixed(1)+"px,"+py.toFixed(1)+"px,0)";
+    }
+  },{passive:true});
+  topSec.addEventListener("mouseleave",function(){
+    if(hpImg&&!rm){hpImg.style.transform="translate3d(0,0,0)"}
+  });
+}
+
+// Magnetic cursor pull on primary interactive elements
+if(!rm){
+  document.querySelectorAll(".btn-magnetic").forEach(function(el){
+    el.addEventListener("mousemove",function(e){
+      var r=el.getBoundingClientRect();
+      var x=(e.clientX-r.left-r.width/2)*0.22;
+      var y=(e.clientY-r.top-r.height/2)*0.22;
+      el.style.transform="translate3d("+x.toFixed(1)+"px,"+y.toFixed(1)+"px,0)";
+    },{passive:true});
+    el.addEventListener("mouseleave",function(){
+      el.style.transform="translate3d(0,0,0)";
+    });
+  });
+}
+
+// marquee
+var words=["Ship End To End","Evaluation First","Humans In The Loop","Distill For The Edge","Explain Every Score"],tr=document.getElementById("track");
+tr.innerHTML=words.concat(words).map(function(w){return"<span>"+w+"</span>"}).join("");
+
+// hero name letters
+var base=rm?0:2500;
+document.querySelectorAll("#nm .row").forEach(function(r,i){var t=r.dataset.t,h="";for(var k=0;k<t.length;k++)h+='<span class="l" style="transition-delay:'+(base+i*240+k*52)+'ms">'+t[k]+"</span>";r.innerHTML=h});
+function hero(){
+ document.getElementById("nm").classList.add("go");
+ document.querySelectorAll("#roles .ln").forEach(function(l,i){l.querySelector("span").style.transitionDelay=(200+i*80)+"ms";l.classList.add("in")});
+ setTimeout(function(){document.getElementById("hd").classList.add("go")},400);
+ setTimeout(function(){var hp=document.getElementById("hp");if(hp)hp.classList.add("go")},550);
+ setTimeout(function(){document.getElementById("cue").classList.add("go")},900);
+}
+
+// preloader
+var pre=document.getElementById("pre"),cnt=document.getElementById("cnt");
+function done(){pre.setAttribute("hidden","");if(lenis)lenis.start()}
+if(rm){done();hero()}else{
+ var t0=performance.now();
+ (function tick(now){var p=Math.min((now-t0)/2000,1);cnt.textContent=Math.round(p*100);
+  if(p<1)requestAnimationFrame(tick);else{pre.classList.add("fade");
+   setTimeout(function(){pre.classList.add("wipe");hero();setTimeout(function(){pre.style.pointerEvents="none";pre.style.display="none";if(lenis)lenis.start()},700)},200)}
+ })(t0);
+}
+
+// in-view
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})});
+document.querySelectorAll(".rv,.rvh").forEach(function(el){io.observe(el)});
+document.querySelectorAll(".rvh").forEach(function(h){h.classList.add("x")});
+var st=document.createElement("style");st.textContent=".rvh .ln>span{}";document.head.appendChild(st);
+
+// achievements
+var W=[
+["Winner","CodeWar’25","Winner","CodeWar’25"],
+["Runner-up","Coimbatore Innovation Hackathon (CIH’26)","Runner-up — for SME Anchor","Coimbatore Innovation Hackathon, CIH’26"],
+["Finalist","Qualcomm Hack4Soc 3.0","Finalist","Qualcomm Hack4Soc 3.0"],
+["Finalist","Build with Gemma & QHacks (MSRIT)","Finalist — Build with Gemma and QHacks","MSRIT, Bengaluru"],
+["Top 150","Google The Big Code","Top 150","Google The Big Code"]];
+var sel=document.getElementById("sel"),q=document.getElementById("q"),qf=document.getElementById("qf");
+var quotes=[
+"Winner of CodeWar’25, competing against top algorithmic engineering teams.",
+"Runner-up at the Coimbatore Innovation Hackathon (CIH’26) with SME Anchor, an event-driven AI operations platform for manufacturing MSMEs.",
+"Finalist at Qualcomm Hack4Soc 3.0 for edge AI optimization and low-latency systems.",
+"Finalist at Build with Gemma, MSRIT, Bengaluru, and finalist at QHacks, MSRIT.",
+"Placed in the top 150 at Google The Big Code out of thousands of competitive programmers."];
+
+W.forEach(function(w,i){var li=document.createElement("li");li.innerHTML='<button><span class="ix">0'+(i+1)+'</span><span class="nm">'+w[1]+'<span class="rl">'+w[0]+'</span></span><i></i></button>';sel.appendChild(li);
+ var b=li.firstChild;["mouseenter","focus","click"].forEach(function(ev){b.addEventListener(ev,function(){set(i)})})});
+function set(i){[].forEach.call(sel.children,function(li,k){li.firstChild.classList.toggle("a",k===i)});
+ q.innerHTML="“"+quotes[i].split(" ").map(function(w,k){return'<span class="w"><span style="--k:'+k+'">'+w+"</span></span>"}).join(" ")+"”";
+ qf.textContent=w=W[i][0]+" — "+W[i][1]}
+set(0);
+
+// nav
+var bg=document.querySelector(".burger"),mn=document.getElementById("menu");
+bg.addEventListener("click",function(){var o=!mn.classList.contains("o");mn.classList.toggle("o",o);bg.classList.toggle("o",o);bg.setAttribute("aria-expanded",o);document.body.style.overflow=o?"hidden":"";});
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(e){var id=a.getAttribute("href"),el=id==="#top"?0:document.querySelector(id);if(el===null)return;e.preventDefault();mn.classList.remove("o");bg.classList.remove("o");document.body.style.overflow="";if(lenis)lenis.scrollTo(el);else window.scrollTo({top:el===0?0:el.offsetTop,behavior:"smooth"})})});
+})();
+</script>
+</body>
+</html>
