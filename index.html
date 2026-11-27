@@ -83,6 +83,9 @@ nav{pointer-events:auto;display:flex;align-items:center;justify-content:space-be
 .links a{position:relative;font-size:.8125rem;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);transition:color .3s,transform .2s var(--ease);display:inline-block;padding-block:.25rem}
 .links a:after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-cyan));box-shadow:0 0 8px rgba(0,229,255,0.6);transition:width .32s var(--ease)}
 .links a:hover{color:var(--fg);transform:translateY(-1px)}.links a:hover:after{width:100%}
+.links a.nav-resume{color:var(--accent)!important;border:1px solid rgba(198,255,51,0.4);padding:.35rem .75rem;border-radius:3px;background:rgba(198,255,51,0.06);transition:all .3s var(--ease)}
+.links a.nav-resume:hover{color:#0E1013!important;background:var(--accent)!important;border-color:var(--accent)!important;box-shadow:0 0 14px rgba(198,255,51,0.5)!important;transform:translateY(-1px)}
+.links a.nav-resume:after{display:none!important}
 .burger{width:2.75rem;height:2.75rem;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.375rem;z-index:70;position:relative;touch-action:manipulation}
 .burger i{height:2px;width:1.5rem;background:var(--fg);transition:transform .3s,opacity .3s,background-color .3s}
 .burger:hover i{background:var(--accent)}
@@ -305,6 +308,7 @@ dl.st dt{order:2;max-width:22ch;text-transform:uppercase;letter-spacing:.14em;co
   <li><a href="#wins" class="btn-magnetic">Wins</a></li>
   <li><a href="#credentials" class="btn-magnetic">Credentials</a></li>
   <li><a href="#contact" class="btn-magnetic">Contact</a></li>
+  <li><a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-magnetic nav-resume">Resume ↗</a></li>
 </ul>
 <button class="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
 </nav></header>
@@ -316,6 +320,7 @@ dl.st dt{order:2;max-width:22ch;text-transform:uppercase;letter-spacing:.14em;co
   <a style="--i:4" href="#wins">Wins</a>
   <a style="--i:5" href="#credentials">Credentials</a>
   <a style="--i:6" href="#contact">Contact</a>
+  <a style="--i:7;color:var(--accent);font-weight:700" href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF) ↗</a>
 </div>
 
 <main>
@@ -1084,7 +1089,10 @@ dl.st dt{order:2;max-width:22ch;text-transform:uppercase;letter-spacing:.14em;co
     <div class="cred-box">
       <div class="cred-header">
         <h3>Certifications</h3>
-        <a href="https://drive.google.com/drive/folders/1KFO-QpW_kyPe4jmWKocWF-tyLQYS-vG1" target="_blank" rel="noopener noreferrer" class="verify-btn btn-magnetic">Verify Credentials <em>↗</em></a>
+        <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+          <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="verify-btn btn-magnetic" style="background:var(--accent);box-shadow:0 0 10px rgba(198,255,51,0.4)">Resume (PDF) <em>↗</em></a>
+          <a href="https://drive.google.com/drive/folders/1KFO-QpW_kyPe4jmWKocWF-tyLQYS-vG1" target="_blank" rel="noopener noreferrer" class="verify-btn btn-magnetic">Verify Credentials <em>↗</em></a>
+        </div>
       </div>
       <div class="cred-list">
         <div class="cred-item">
@@ -1165,6 +1173,10 @@ dl.st dt{order:2;max-width:22ch;text-transform:uppercase;letter-spacing:.14em;co
       <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
       Coimbatore, Tamil Nadu, India
     </span>
+    <a class="contact-item" href="resume.pdf" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM13 9V3.5L18.5 9H13zM8 17h8v2H8v-2zm0-4h8v2H8v-2zm0-4h3v2H8V9z"/></svg>
+      Resume (PDF) ↗
+    </a>
     <a class="contact-item" href="https://drive.google.com/drive/folders/1KFO-QpW_kyPe4jmWKocWF-tyLQYS-vG1" target="_blank" rel="noopener noreferrer">
       <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
       Certificates Drive ↗
@@ -1178,6 +1190,7 @@ dl.st dt{order:2;max-width:22ch;text-transform:uppercase;letter-spacing:.14em;co
     <p class="lbl" style="margin-top:1rem">Coimbatore, Tamil Nadu, India · +91 98435 60889</p>
   </div>
   <ul class="c3" style="grid-column:span 3">
+    <li><a href="resume.pdf" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:600">Resume (PDF) ↗</a></li>
     <li><a href="https://www.linkedin.com/in/salmon-angelo/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
     <li><a href="https://github.com/salmonangelo" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
   </ul>
